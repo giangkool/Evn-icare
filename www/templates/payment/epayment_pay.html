@@ -1,0 +1,221 @@
+<style> 
+  .S {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #da5350), color-stop(1, #da5350));
+	background:-moz-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-webkit-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-o-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-ms-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:linear-gradient(to bottom, #da5350 5%, #da5350 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#da5350', endColorstr='#da5350',GradientType=0);
+	background-color:#da5350;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:9px 14px;
+	text-decoration:none;
+}
+
+.padding{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.ui-datepicker {
+                margin-left: -30px;
+                margin-top: 15px;
+            }
+            .ha a{
+                text-decoration: none;
+            }
+ /*table, th, td {
+    padding: 5px;
+}*/
+</style>
+<ion-view view-title="Tra cứu" cache-view="true" enable-menu-with-back-views="false">
+  <ion-content class="padding">
+      <div>
+          <center>
+                <table style="width:100%; margin-top:5px;">
+                    <tr>
+                        <td colspan="2">
+                            <label class="item item-input" style="width:95%; height:40px; border-radius:5px; border:none;"> 
+                                <input type="text" ng-model="user.customerId" placeholder="Mã khách hàng" style="border: 1px solid #DDDDDD; border-radius: 5px; padding-left: 5px; min-height:37px">
+                            </label>
+                        </td>
+                    </tr>
+                   <!--<tr>
+                        <td colspan="2">
+                            <label class="item item-input" style="width:95%; height:40px; border-radius:5px; border:none;"> 
+                                <input type="password" placeholder="Mật khẩu" style="border: 1px solid #DDDDDD; border-radius: 5px; padding-left: 5px; min-height:37px">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label class="item item-input" style="width:95%; height:40px; border-radius:5px; border:none;"> 
+                                <input type="text" id="" placeholder="Mã hóa đơn" onkeypress="return kaka(event, this)"  style="border: 1px solid #DDDDDD; border-radius: 5px; padding-left: 5px; min-height:37px">
+                            </label>
+                        </td>
+                    </tr>-->
+                </table> 
+                <center style="margin-bottom:15px">
+            <button class="btnlogin button ion-ios-search" ng-click="pay_do(user)" style="color:#fff;" onclick="hideinput2()"><i style="padding-left:5px;">Tra cứu</i></button>
+            </center>
+                <!--<div ng-hide="invoices" style="padding-top:20px">
+      Không có dữ liệu!
+    </div>-->
+    
+                <div id="hide2" style="padding-top:15px; padding-bottom:50px;">
+                    <table style="padding:1px">
+                        <tr>		
+								<select class="item item-input" style="width:95%; height:40px; border-radius:5px;">
+                                  <option value="volvo">Thanh toán tất cả hóa đơn</option>
+								  <option value="volvo">Hóa đơn tiền điện tháng 2</option>
+								  <option value="saab">Hóa đơn tiền điện tháng 4</option>
+								  <option value="opel">Hóa đơn tiền điện tháng 5</option>
+								</select>
+							</tr>
+                        <tr>
+                            <td><h5 style="color:#000; padding-top:5px; width:130px">Mã khách hàng :</h5></td>
+                                <td style="color:#598FDF">Minhhuyen58</td>
+                        </tr>
+                        <tr>
+                            <td><h5 style="color:#000; padding-top:5px; width:130px">Mã hóa đơn :</h5></td>
+                                <td style="color:#598FDF">GNC2016849215640124</td>
+                        </tr>
+                         <tr>
+                            <td><h5 style="color:#000; padding-top:5px; width:130px">Số tiền thanh toán :</h5></td>
+                                <td style="color:#598FDF">1.090.000 VNĐ </td>
+                                <!--<a style="padding-left:5px; color:red" onclick="hideinput()">chi tiết</a>-->
+                        </tr>
+                        <tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:130px">Trạng thái: </h5></td>
+                                <td style="color:red">Chưa thanh toán</td>
+                            </tr>
+                    </table>
+                     <center ng-hide="invoices.data.status == 'paid'">
+                            <img src="img/color-stripe.jpg" style="margin:auto; width:300px; display:block; margin-bottom:5px; margin-top:15px">
+                            <a class="btnpayment button" href="#/app/epayment-tappaytab/{{user.customerId}}/{{invoices.data.payment.debt_amount}}/1" style="color:#fff; margin-right:5px">TAPPAY</a>
+                            <a class="btnpayment2 button" href="#/app/epayment-tappaytab/{{user.customerId}}/{{invoices.data.payment.debt_amount}}/2" ng-click="searchContent2();" style="color:#fff">ATM</a>
+                            <a class="btnpayment button" href="#" ng-click="popup()" style="color:#fff; margin-right:5px; background:#43753A">CREDIT</a>
+                            <!--<a class="btnpayment2 button" href="#/app/epayment-tappaytab/{{user.customerId}}/{{invoices.data.payment.debt_amount}}/2" ng-click="searchContent2();" style="color:#fff">ATM</a>-->
+                        </center>
+                        <center ng-hide="invoices.data.status == 'paid'">
+                            <a class="btnpayment button" href="#" ng-click="popup()" style="color:#fff; margin-right:5px; background:#EE560B">THẺ CÀO</a>
+                            <a class="btnpayment2 button" href="#" ng-click="popup()" ng-click="searchContent2();" style="color:#fff; font-size:13px; background:#C2CF8A">TRẢ TRƯỚC</a>
+                            <a class="btnpayment button" href="#" ng-click="popup()" style="color:#fff; margin-right:5px; background:#E5001D; font-size:14px">EASYCARD</a>
+                            <!--<a class="btnpayment2 button" href="#/app/epayment-tappaytab/{{user.customerId}}/{{invoices.data.payment.debt_amount}}/2" ng-click="searchContent2();" style="color:#fff">ATM</a>-->
+                        </center>
+                        <div ng-hide="invoices.data.status == 'paid'">
+                            <a class="btnpayment2 button" href="#" ng-click="popup()" ng-click="searchContent2();" style="color:#fff; font-size:13px; background:#4862A3">FACEBOOK</a>
+                            <a class="btnpayment button" href="#" ng-click="popup()" style="color:#fff; margin-right:5px; background:#26C9DA">NHU CẦU</a>
+                        </div>
+                </div>
+      
+                    <!--ng-hide="!invoices"-->
+                <div id="hide1"  style="padding-top:15px; padding-bottom:50px; margin-top:-400px"> 
+                    <table style="padding:1px">
+							<tr>		
+								<select class="item item-input" style="width:95%; height:40px; border-radius:5px;">
+								  <option value="volvo">Tiền điện tháng 2</option>
+								  <option value="saab">Tiền điện tháng 4</option>
+								  <option value="opel">Tiền điện tháng 5</option>
+								</select>
+							</tr>
+                            <tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:130px">Mã khách hàng: </h5></td>
+                                <td style="color:#598FDF">{{invoices.data.customer._id}} Minhhuyen58</td>
+                            </tr>
+                            <tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:130px">Tên khách hàng: </h5></td>
+                                <td>{{invoices.data.customer.name}} Nguyễn minh huyền</td>
+                            </tr>
+                            <!--<tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:150px">Điện năng tiêu thụ: </h5></td>
+                                <td>{{content.faracount}} KWh</td>
+                            </tr>-->
+                            <tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:130px">Nội dung:</h5></td>
+                                <td>{{invoices.data.note}} Tiền điện chưa thanh toán</td>
+                            </tr>
+                            <!--<tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:150px">Nhà cung cấp: </h5></td>
+                                <td>{{invoices.data.provider.name}}</td>
+                            </tr>-->
+                            <!--<tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:150px">Số tiền thanh toán: </h5></td>
+                                <td>{{invoices.data.payment.bill_amount}} VNĐ</td>
+                            </tr>-->
+                            <tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:130px">Số tiền thanh toán:</h5></td>
+                                <td>{{invoices.data.payment.debt_amount}} 350.000 VNĐ</td>
+                            </tr>
+                            <tr ng-hide="invoices.data.status == 'paid'">
+                                <td><h5 style="color:#000; padding-top:5px; width:130px">Trạng thái: </h5></td>
+                                <td style="color:red">Chưa thanh toán</td>
+                            </tr>
+                            <!--<tr ng-hide="invoices.data.status == 'un_paid'">
+                                <td><h5 style="color:#000; padding-top:5px; width:130px">Trạng thái: </h5></td>
+                                <td style="color:#598FDF">Đã thanh toán</td>
+                            </tr>-->
+                    </table>   
+                        <center ng-hide="invoices.data.status == 'paid'">
+                            <img src="img/color-stripe.jpg" style="margin:auto; width:300px; display:block; margin-bottom:5px; margin-top:15px">
+                            <a class="btnpayment button" href="#/app/epayment-tappaytab/{{user.customerId}}/{{invoices.data.payment.debt_amount}}/1" style="color:#fff; margin-right:5px">TAPPAY</a>
+                            <a class="btnpayment2 button" href="#/app/epayment-tappaytab/{{user.customerId}}/{{invoices.data.payment.debt_amount}}/2" ng-click="searchContent2();" style="color:#fff">ATM</a>
+                            <a class="btnpayment button" href="#" ng-click="popup()" style="color:#fff; margin-right:5px; background:#43753A">CREDIT</a>
+                            <!--<a class="btnpayment2 button" href="#/app/epayment-tappaytab/{{user.customerId}}/{{invoices.data.payment.debt_amount}}/2" ng-click="searchContent2();" style="color:#fff">ATM</a>-->
+                        </center>
+                       <center ng-hide="invoices.data.status == 'paid'">
+                            <a class="btnpayment button" href="#" ng-click="popup()" style="color:#fff; margin-right:5px; background:#EE560B">THẺ CÀO</a>
+                            <a class="btnpayment2 button" href="#" ng-click="popup()" ng-click="searchContent2();" style="color:#fff; font-size:13px; background:#C2CF8A">TRẢ TRƯỚC</a>
+                            <a class="btnpayment button" href="#" ng-click="popup()" style="color:#fff; margin-right:5px; background:#E5001D; font-size:14px">EASYCARD</a>
+                            <!--<a class="btnpayment2 button" href="#/app/epayment-tappaytab/{{user.customerId}}/{{invoices.data.payment.debt_amount}}/2" ng-click="searchContent2();" style="color:#fff">ATM</a>-->
+                        </center>
+                        <center ng-hide="invoices.data.status == 'paid'">
+                            <a class="btnpayment2 button" href="#" ng-click="popup()" ng-click="searchContent2();" style="color:#fff; font-size:13px; background:#4862A3">FACEBOOK</a>
+                            <a class="btnpayment button" href="#" ng-click="popup()" style="color:#fff; margin-right:5px; background:#26C9DA">NHU CẦU</a>
+                        </center>
+                </div>
+            </center>
+      </div>
+            
+             <script language="javascript">
+                                     document.getElementById("hide2").style.visibility = "hidden";
+                                    document.getElementById("hide1").style.visibility = "hidden";
+                                function hideinput() {
+                                    document.getElementById("hide2").style.visibility = "hidden";
+                                    // document.getElementById("hide1").style.visibility = "visible";
+                                    document.getElementById("hide1").style.visibility = "hidden";
+                                } 
+                                function hideinput2(){
+                                    // document.getElementById("hide2").style.visibility = "visible";
+                                    document.getElementById("hide2").style.visibility = "hidden";
+                                }
+                     //format money input
+                // document.getElementById("amount").onkeyup = function () {
+                //     if (document.getElementById("amount").value != 0) {
+                //         this.value = parseFloat(this.value.replace(/,/g, ""))
+                //                         .toFixed()
+                //                         .toString()
+                //                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                //     }
+
+                // }
+                
+                // chỉ nhập cho nhập số for firefox
+                function kaka(e, kakatexto) {
+                    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                        return false;
+                    }
+                }
+            </script>
+  </ion-content>
+</ion-view>

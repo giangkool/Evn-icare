@@ -1,0 +1,125 @@
+<style> 
+  .S {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #da5350), color-stop(1, #da5350));
+	background:-moz-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-webkit-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-o-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-ms-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:linear-gradient(to bottom, #da5350 5%, #da5350 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#da5350', endColorstr='#da5350',GradientType=0);
+	background-color:#da5350;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:9px 14px;
+	text-decoration:none;
+}
+
+.padding{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.ui-datepicker {
+                margin-left: -30px;
+                margin-top: 15px;
+            }
+            .ha a{
+                text-decoration: none;
+            }
+ table, th, td {
+    padding: 5px;
+}
+</style>
+<ion-view view-title="Liên ngân hàng" cache-view="true" enable-menu-with-back-views="false">
+  <ion-content class="padding">
+      <div>
+          <center>
+                <table style="width:100%; margin-top:10px;">
+                     <tr>
+                        <td colspan="2">
+                            <label class="item item-input">
+                                <span class="input-label" style="text-align:left; font-size:15px; margin-right:5px; color:#0170BC">Tài khoản</span>
+                                 <select ng-model="search_data.infou" id="selectPointOfInterest" ng-options="info.value for info in info_user" style="border:none; height:34px" required>
+                                </select>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label class="item item-input">
+                                <span class="input-label" style="text-align:left; font-size:15px; margin-right:5px; color:#0170BC">Tên người hưởng</span>
+                               <input type="text" ng-model="search_data.userf"  style="background: #fff;">
+                            </label>
+                        </td>
+                    </tr>
+                      <tr>
+                        <td colspan="2">
+                            <label class="item item-input">
+                                <span class="input-label" style="text-align:left; font-size:15px; margin-right:5px; color:#0170BC">Tài khoản hưởng</span>
+                                <select ng-model="search_data.infof" id="selectPointOfInterest" ng-options="info.value for info in info_user" style="border:none; height:34px" required>
+                                </select>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label class="item item-input">
+                                <!--<span class="input-label" style="text-align:left; font-size:15px; margin-right:5px; color:#0170BC">Ngân hàng</span>-->
+                                <select ng-model="search_data.bankName" id="selectPointOfInterest" ng-options="bankName.value for bankName in ebanklist" style="border:none; height:34px; margin-left:-13px; font-size:12px; color:#0170BC" required>
+                                </select>
+                            </label>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td colspan="2">
+                            <label class="item item-input">
+                                <span class="input-label" style="text-align:left; font-size:15px; margin-right:5px; color:#0170BC">Số tiền</span>
+                               <input type="text" id="amount"  ng-model="search_data.amount" onkeypress="return kaka(event, this)" style="background: #fff;">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label class="item item-input">
+                                <span class="input-label" style="text-align:left; font-size:15px; margin-right:5px; color:#0170BC">Nội dung</span>
+                               <input type="text" id=""  ng-model="search_data.comment" style="background: #fff;">
+                            </label>
+                        </td>
+                    </tr>
+                </table> 
+            </center>
+           
+            <center style="margin-bottom:15px">
+                <button type="submit" class="btnlogin button ion-ios-checkmark-outline" ng-click="done(); searchContent(search_data)" style="color:#fff; margin-right:5px"><i style="padding-left:5px;">Xác nhận</i></button>
+                <button type="submit" class="btnlogin button ion-ios-close-outline" ng-click="clear()" style="color:#fff; background: #41B1FB"><i style="padding-left:5px;">Hủy bỏ</i></button>
+            </center>
+      </div>
+            <script language="javascript">
+                // chỉ nhập cho nhập số for firefox
+                function kaka(e, kakatexto) {
+                    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                        return false;
+                    }
+                }
+
+                  //format money input
+                document.getElementById("amount").onkeyup = function () {
+                    if (document.getElementById("amount").value != 0) {
+                        this.value = parseFloat(this.value.replace(/,/g, ""))
+                                        .toFixed()
+                                        .toString()
+                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    }
+
+                }
+            </script>
+  </ion-content>
+</ion-view>

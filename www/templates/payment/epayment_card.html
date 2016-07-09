@@ -1,0 +1,95 @@
+<style> 
+  .S {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #da5350), color-stop(1, #da5350));
+	background:-moz-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-webkit-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-o-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-ms-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:linear-gradient(to bottom, #da5350 5%, #da5350 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#da5350', endColorstr='#da5350',GradientType=0);
+	background-color:#da5350;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:9px 14px;
+	text-decoration:none;
+}
+
+.padding{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.ui-datepicker {
+                margin-left: -30px;
+                margin-top: 15px;
+            }
+            .ha a{
+                text-decoration: none;
+            }
+ table, th, td {
+    padding: 5px;
+}
+</style>
+<ion-view view-title="EasyCard" cache-view="true" enable-menu-with-back-views="false">
+  <ion-content class="padding">
+      <div>
+          <center>
+                <table style="width:100%; margin-top:5px;">
+                   <tr>
+                        <td colspan="2">
+                            <label class="item item-input" style="width:90%; height:40px; border-radius:5px; border:none;"> 
+                                <input type="text" placeholder="Chủ tài khoản" style="border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 20px; padding-left: 5px; min-height:37px">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label class="item item-input" style="width:90%; height:40px; border-radius:5px; border:none;"> 
+                                <input type="text" placeholder="Số tài khoản" onkeypress="return kaka(event, this)"  style="border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 20px; padding-left: 5px; min-height:37px">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label class="item item-input" style="width:90%; height:40px; border-radius:5px; border:none;"> 
+                                <input type="text" id="amount" placeholder="Số tiền thanh toán" onkeypress="return kaka(event, this)"  style="border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 20px; padding-left: 5px; min-height:37px">
+                            </label>
+                        </td>
+                    </tr>
+                </table> 
+            </center>
+           
+            <center style="margin-bottom:15px">
+            <button class="btnlogin button ion-ios-checkmark-outline" ng-click="done()" style="color:#fff"><i style="padding-left:5px;">Xác nhân</i></button>
+            </center>
+      </div>
+            
+             <script language="javascript">
+                     //format money input
+                document.getElementById("amount").onkeyup = function () {
+                    if (document.getElementById("amount").value != 0) {
+                        this.value = parseFloat(this.value.replace(/,/g, ""))
+                                        .toFixed()
+                                        .toString()
+                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    }
+
+                }
+                
+                // chỉ nhập cho nhập số for firefox
+                function kaka(e, kakatexto) {
+                    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                        return false;
+                    }
+                }
+            </script>
+  </ion-content>
+</ion-view>

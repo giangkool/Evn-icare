@@ -1,0 +1,23 @@
+<ion-modal-view>
+    <ion-view view-title='' style="background-color : transparent;">
+        <ion-content padding="'true'" class="has-header">
+            <div class="list card">
+        <div class="item item-divider">Thông tin ứng dụng
+            <button class="glyphicon glyphicon-remove" ng-click="closeabout()" style="float:right;margin-top:0px; border:none; color:red">X</button>
+        </div>
+        <div class="item item-body">
+            <table width="100%">
+                <tr>
+                    <td>Tên ứng dụng</td>
+                    <td>{{name_info}}</td>
+                </tr>
+                <tr>
+                    <td style="padding-top:15px">Phiên bản</td>
+                    <td>{{version_info}}</td>
+                </tr>
+            </table>
+        </div>
+        </div>
+        </ion-content>
+    </ion-view>
+</ion-modal-view>

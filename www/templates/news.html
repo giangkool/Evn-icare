@@ -1,0 +1,207 @@
+<style>
+    p {
+        margin-bottom: 10px;
+        line-height: 1.5;
+    }
+    
+    main {
+        max-width: 100%;
+        margin: 0 auto;
+        background: #fff;
+    }
+    
+    section {
+        display: none;
+        padding: 20px 0 0;
+        border-top: 1px solid #ddd;
+    }
+    
+    input {
+        display: none;
+    }
+    
+    label {
+        display: inline-block;
+        margin: 0 0 -1px;
+        padding: 15px 25px;
+        font-weight: 600;
+        text-align: center;
+        color: #bbb;
+        border: 1px solid transparent;
+    }
+    
+    label:before {
+        font-family: fontawesome;
+        font-weight: normal;
+        margin-right: 10px;
+    }
+    
+    label:hover {
+        color: #888;
+        cursor: pointer;
+    }
+    
+    input:checked + label {
+            color: #fff;
+            border: 1px solid #ddd;
+            border-top: 0;
+            border-bottom: 2px solid red;
+            border-right: 0;
+            border-left: 0;
+            background: #43753A;
+    }
+    
+    #tab1:checked ~ #content1,
+    #tab2:checked ~ #content2,
+    #tab3:checked ~ #content3,
+    #tab4:checked ~ #content4 {
+        display: block;
+    }
+    
+    @media screen and (max-width: 650px) {
+        label {
+            font-size: 13px;
+        }
+        label:before {
+            margin: 0;
+            font-size: 18px;
+        }
+    }
+    
+    @media screen and (max-width: 400px) {
+        label {
+            padding: 15px;
+        }
+    }
+    
+    .toph {
+        width: 100%;
+        height: 40px;
+        background: #ECECEC;
+        border: none;
+        margin-top: -20px;
+        margin-bottom: 20px;
+    }
+     .toph2 {
+        width: 100%;
+        height: 40px;
+        background: #ECECEC;
+        border: none;
+        margin-bottom: 20px;
+    }
+    .tcicle {
+        width: 25px;
+        height: 18px;
+        background: #FF9126;
+        border-radius: 4px;
+        float: right;
+        color: #fff;
+    }
+    
+    .tcontent {
+        min-height: 87px;
+        height: auto;
+        width: 100%;
+        border-bottom: 1px solid #F0F0F0;
+        margin-bottom: 20px;
+    }
+    
+    .tcheader {
+        width: 95%;
+        height: 20px;
+        color: #B2B2B2;
+        margin-top: -15px;
+        margin-left: 10px;
+        margin-bottom: 6px;
+        font-size: 12px;
+        font-weight: 400;
+    }
+    
+    .tctitle {
+        width: 100%;
+        height: 20px;
+        color: #62BCA3;
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .tct {
+        width: 100%;
+        height: 20px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        font-size: 11px;
+    }
+     .nti {
+            width: 35px;
+        height: 35px;
+        margin-bottom: -10px;
+        margin-right: 5px;
+        margin-top: -5px;
+        margin-left: 10px;
+    }
+</style>
+<script src="js/prefixfree.min.js"></script>
+<ion-view view-title="TIN TỨC" hide-back-button="true">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear" menu-toggle="left">
+            <img src="img/DICH_VU/dm.png">
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <main>
+
+            <input id="tab1" type="radio" name="tabs" checked>
+            <label for="tab1" style="width: 30%; margin-left:2px">TIN TỨC
+                <!--<div class="tcicle">5</div>-->
+            </label>
+
+            <input id="tab2" type="radio" name="tabs">
+            <label for="tab2" style="width:33%">GIỚI THIỆU</label>
+
+            <input id="tab3" type="radio" name="tabs">
+            <label for="tab3" style="width: 33%;">HỎI & ĐÁP</label>
+            
+            
+            <section id="content1" ng-repeat="content in newscategories">
+            <!--<div class="toph">
+                    <h2 style="padding-top: 8px; padding-left: 20px; font-size: 17px; color: #868686;">Hôm qua</h2>
+                </div>-->
+                <a ng-href="#/app/newdetails/{{content.id}}">
+                    <img src="{{content.image}}" class="nti"/> {{content.name}}           
+                </a>
+                <hr style="border-top: dashed 1px #70389e; margin-bottom:10px; margin-top:20px" />
+                
+                 <!--<div class="toph2">
+                    <h2 style="padding-top: 8px; padding-left: 20px; font-size: 17px; color: #868686;">Tháng này 3/12</h2>
+                 </div>-->
+            </section>
+            
+            <section id="content2" ng-repeat="content in intro" class="padding">  
+              <article ng-bind-html="content.content"></article>
+            </section>
+
+            <section id="content3" ng-repeat="content in faq" class="padding" style="padding-bottom:50px">
+                <a style="text-decoration: underline; color:#3879D9; font-size:16px">{{content.question}}</a><br/>
+                <article ng-bind-html="content.answer"></article>
+                <hr style="border-top: dashed 1px #70389e; margin-bottom:10px; margin-top:10px" />
+                
+                <!--<div class="tcontent">
+                    <div class="tcheader"><i style="float:left">Khuyến mãi</i> <i style="float:right">12:45</i></div>
+                    <div class="tctitle"><i>Khuyến mãi 50% tháng 3/2015</i></div>
+                    <div class="tct"><i>Từ ngày 20/3 đến ngày 21/3, Viettel khuyến mãi 50%...</i></div>
+                </div>
+                <div class="tcontent">
+                    <div class="tcheader"><i style="float:left">Khuyến mãi</i> <i style="float:right">12:45</i></div>
+                    <div class="tctitle"><i>Khuyến mãi 50% tháng 3/2015</i></div>
+                    <div class="tct"><i>Từ ngày 20/3 đến ngày 21/3, Viettel khuyến mãi 50%...</i></div>
+                </div>
+                <div class="tcontent" style="margin-bottom:0">
+                    <div class="tcheader"><i style="float:left">Khuyến mãi</i> <i style="float:right">12:45</i></div>
+                    <div class="tctitle"><i>Khuyến mãi 50% tháng 3/2015</i></div>
+                    <div class="tct"><i>Từ ngày 20/3 đến ngày 21/3, Viettel khuyến mãi 50%...</i></div>
+                </div>-->
+            </section>
+        </main>
+    </ion-content>
+</ion-view>

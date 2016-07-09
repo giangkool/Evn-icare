@@ -1,0 +1,156 @@
+<style>
+    p {
+        font-size: 15px;
+        line-height: 1.5;
+        margin-bottom: 0px;
+    }
+    
+    main {
+        max-width: 100%;
+        margin: 0 auto;
+        background: #fff;
+    }
+    
+    section {
+        display: none;
+        padding: 20px 0 0;
+        border-top: 1px solid #ddd;
+    }
+    
+    input {
+        display: none;
+    }
+    
+    label {
+        display: inline-block;
+        margin: 0 0 -1px;
+        padding: 15px 25px;
+        font-weight: 600;
+        text-align: center;
+        color: #bbb;
+        border: 1px solid transparent;
+    }
+    
+    label:before {
+        font-family: fontawesome;
+        font-weight: normal;
+        margin-right: 10px;
+    }
+    
+    label:hover {
+        color: #888;
+        cursor: pointer;
+    }
+    
+    input:checked + label {
+            color: #fff;
+            border: 1px solid #ddd;
+            border-top: 0;
+            border-bottom: 2px solid red;
+            border-right: 0;
+            border-left: 0;
+            background: #75C4AE;
+    }
+    
+    #tab1:checked ~ #content1,
+    #tab2:checked ~ #content2,
+    #tab3:checked ~ #content3,
+    #tab4:checked ~ #content4 {
+        display: block;
+    }
+    
+    @media screen and (max-width: 650px) {
+        label {
+            font-size: 13px;
+        }
+        label:before {
+            margin: 0;
+            font-size: 18px;
+        }
+    }
+    
+    @media screen and (max-width: 400px) {
+        label {
+            padding: 15px;
+        }
+    }
+    
+    .toph {
+        width: 100%;
+        height: 40px;
+        background: #ECECEC;
+        border: none;
+        margin-top: -20px;
+        margin-bottom: 20px;
+    }
+     .toph2 {
+        width: 100%;
+        height: 40px;
+        background: #ECECEC;
+        border: none;
+        margin-bottom: 20px;
+    }
+    .tcicle {
+        width: 25px;
+        height: 18px;
+        background: #FF9126;
+        border-radius: 4px;
+        float: right;
+        color: #fff;
+    }
+    
+    .tcontent {
+        width: 100%;
+        border-bottom: 1px solid #F0F0F0;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    
+    .tcheader {
+        /*width: 95%;*/
+        height: 20px;
+        color: #B2B2B2;
+        margin-top: -15px;
+        /*margin-left: 10px;*/
+        margin-bottom: 6px;
+        font-size: 12px;
+        font-weight: 400;
+    }
+    
+    .tctitle {
+        width: 100%;
+        color: #62BCA3;
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .tct {
+        width: 100%;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        font-size: 11px;
+    }
+     .nti {
+        width: 35px;
+        height: 35px;
+        margin-bottom: -10px;
+        margin-right: 5px;
+        margin-top: -5px;
+        margin-left: 10px;
+    }
+</style>
+<ion-view view-title="Danh mục tin tức" cache-view="true" enable-menu-with-back-views="false">
+    <ion-content class="padding">
+        <center>
+            <div style="padding-bottom:40px">
+                    <div class="tcontent" ng-repeat="content in contents">
+                        <div class="tcheader"><i style="float:left">Thời gian</i> <i style="float:right">{{content.createtime}}</i></div>
+                        <a ng-href="#/app/newdetail/{{content.id}}" class="tctitle">
+                            <center><img src="{{content.image}}"></center>
+                            <article ng-bind-html="content.shortcontent" style="text-align:left"></article>
+                        </a>
+                    </div>
+            </div>
+        </center>
+    </ion-content>
+</ion-view>

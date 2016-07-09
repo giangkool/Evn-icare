@@ -1,0 +1,136 @@
+    <style>
+        .dv{
+            background: white;
+            opacity: .9;
+        }
+      .login {
+        background: url('img/bg.jpg');
+        background-size: cover;
+        padding: 0;
+        margin: 0;
+     }
+     .footer{
+            clear: both;
+            background: orangered;
+            z-index: 10;
+            height: 30px;
+            margin-top: 55px;
+            margin-bottom: -10px;
+            /*margin-left: -100px;
+            margin-right: -100px;*/
+            /*min-width: 118px;*/
+            min-width: 100%;
+            text-align: center;
+            font-size: 11px;
+            color: #fff;
+            bottom: 0;
+            position: absolute;
+     }
+     .dfooter{
+            clear: both;
+            position: absolute;
+            z-index: 10;
+            height: auto;
+            margin-top: 55px;
+            margin-bottom: -10px;
+            /*margin-left: -100px;
+            margin-right: -100px;*/
+            /*min-width: 118px;*/
+            min-width: 100%;
+            text-align: center;
+            font-size: 11px;
+            color: #fff;
+            bottom: 33px;
+     }
+      .hfooter{
+            clear: both;
+            background: #fff;
+            position: absolute;
+            z-index: 10;
+            height: 4em;
+            margin-top: 55px;
+            margin-bottom: -10px;
+            /*margin-left: -100px;
+            margin-right: -100px;*/
+            /*min-width: 118px;*/
+            min-width: 100%;
+            text-align: center;
+            font-size: 11px;
+            color: #fff;
+            bottom: 0;
+            opacity: .6;
+     }
+     .ch{
+         width: 33%;
+         height: 50px;
+         text-align: center;
+         margin-top: 20px;
+         font-weight: 700;
+     }
+     .cicle{
+         border-radius: 100px;
+         margin-left: 20px;
+         font-size: 40px;
+         padding-left: 10px;
+         padding-right: 10px;
+         color: #fff;
+     }
+    </style>
+ <ion-view title="ENV Hà Nội - iCare" cache-view="false" hide-nav-bar="true" hide-tabs="true" class="login" >
+             <ion-content padding="'true'" class="has-header" style="top:0;">
+                <center><img src="img/icon.png" width="170" height="170" style="width: 170px; height: 170px;"></center>
+        <form name="loginForm" class="list" novalidate>
+            <ion-list>
+                <label class="item item-input ion-android-person" style="margin-bottom:10px">
+                    <!--<span class="input-label" style="padding-left:5px">Tên truy cập</span>-->
+                    <input type="text" placeholder="Tài khoản đăng nhập" ng-model="user.username" style="padding-left:20px" required>
+                </label>
+                <label class="item item-input ion-android-lock">
+                    <!--<span class="input-label">Mật khẩu</span>-->
+                    <input type="password" placeholder="Mật khẩu" ng-model="user.password" style="padding-left:20px" required>
+                </label>
+            </ion-list>
+            <div class="spacer" style="height: 20px;"></div>
+            <strong class="color-assertive" style="color:red">{{error_message}}</strong>
+            <button class="button button-stable button-block " ng-click="signIn(user)" ng-disabled="loginForm.$invalid" style="background:#0694DE; color:#fff; font-family:sa">ĐĂNG NHẬP</button>
+            <!--<a menu-close="" class="button button-positive button-clear button-block">Hoặc đăng ký tài khoản</a>-->
+            <div class="spacer" style="height: 10px;"></div>
+            <div class="button-bar">
+            <button class="button icon-left ion-person-add" style="font-size:12px;border:none; border-radius:20px;background:#16237F;color:#fff">ĐĂNG KÝ</button>
+            <a class="button button-balanced icon-left ion-ios-help-outline" style="font-size:11px;border-radius:20px;border:none;width:150px;margin-left:5px; background:#000; opacity:0.7">QUÊN MẬT KHẨU</a>
+            </div>
+        </form>
+      </ion-content>  
+    
+   <div class="dfooter login-header" data-role="footer" data-hide-during-focus="true">
+    <div class="button-bar" style="width:100%;margin-top: -90px;position: absolute; z-index:99999;margin-left:-9px">
+                <div class="ch">
+                     <a ng-href="#/app/news" class="cicle ion-chatboxes" style="background:#CF4344;-webkit-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);-moz-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);"></a>                    
+                </div>
+                 
+                <div class="ch"> 
+                    <a ng-click="about()" class="cicle ion-ios-information-empty" style="background:#6CAF52; padding-left:23px; padding-right:23px;-webkit-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);-moz-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);"></a>
+                </div>
+                <div class="ch">
+                   <a class="cicle ion-ios-help-empty" style="background:#FFC040; padding-left:21px; padding-right:21px;-webkit-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);-moz-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);"></a> 
+                </div>   
+     </div>
+    <div class="button-bar" style="width:100%;margin-top: -45px;position: absolute; z-index:99999;">
+        <div class="ch">
+          <span style="color:#000">Tin tức</span>
+        </div>
+         <div class="ch">
+           <span style="color:#000">Thông tin ứng dụng</span>
+        </div>
+         <div class="ch">
+           <span style="color:#000">Trợ giúp</span>
+        </div>
+    </div>
+    <div class="hfooter" data-role="footer" data-hide-during-focus="false">
+    </div>
+      </div>
+      <div class="footer" data-role="footer" data-hide-during-focus="false">        
+         <p>© Bản quyền 2015 EVNiCARE</p>
+      </div> 
+</ion-view>
+

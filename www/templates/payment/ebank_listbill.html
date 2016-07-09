@@ -1,0 +1,158 @@
+<style> 
+  .S {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #da5350), color-stop(1, #da5350));
+	background:-moz-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-webkit-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-o-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-ms-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:linear-gradient(to bottom, #da5350 5%, #da5350 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#da5350', endColorstr='#da5350',GradientType=0);
+	background-color:#da5350;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:9px 14px;
+	text-decoration:none;
+}
+
+.padding{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.ui-datepicker {
+                margin-left: -30px;
+                margin-top: 15px;
+            }
+            .ha a{
+                text-decoration: none;
+            }
+ table, th, td {
+    padding: 5px;
+}
+.nti{
+    width: 35px;
+    height: 35px;
+    margin-bottom: -10px;
+    margin-right: 5px;
+}
+#map {
+    height: 39%;
+    width: 100%;
+}
+.scroll {
+    height: 100%;
+}
+</style>
+<ion-view view-title="Tra cứu hóa đơn" cache-view="true" enable-menu-with-back-views="false">
+  <ion-content class="padding">
+      <div>
+          <center>
+                <table style="width:100%; margin-top:10px;">
+                     <tr>
+                        <td colspan="2">
+                            <label class="item item-input">
+                                <span class="input-label" style="text-align:left; font-size:15px; margin-right:5px; color:#0170BC">Số tài khoản</span>
+                                 <select ng-model="search_data.infou" id="selectPointOfInterest" ng-options="info.value for info in info_user" style="border:none; height:34px" required>
+                                </select>
+                            </label>
+                        </td>
+                    </tr>
+                      <tr>
+                        <td colspan="2">
+                            <label class="item item-input">
+                                <span class="input-label" style="text-align:left; font-size:15px; margin-right:5px; color:#0170BC">Dịch vụ</span>
+                                <select ng-model="search_data.service" id="selectPointOfInterest" ng-options="service.value for service in services" style="border:none; height:34px; margin-left:-10px" required>
+                                </select>
+                            </label>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td colspan="2">
+                            <label class="item item-input">
+                                <span class="input-label" style="text-align:left; font-size:15px; margin-right:5px; color:#0170BC">Nhà cung cấp</span>
+                                <select ng-model="search_data.supplier" id="selectPointOfInterest" ng-options="supplier.value for supplier in suppliers" style="border:none; height:34px" required>
+                                </select>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label class="item item-input">
+                                <span class="input-label" style="text-align:left; font-size:15px; margin-right:5px; color:#0170BC">Mã khách hàng</span>
+                                <input type="text" id="bill" ng-model="search_data.bill" style="background: #fff;">
+                            </label>
+                        </td>
+                    </tr>
+                </table> 
+            </center>
+           
+            <center style="margin-bottom:15px">
+                <button type="submit" class="btnlogin button ion-ios-search" ng-click="searchContent(search_data)" style="color:#fff"><i style="padding-left:5px;">Tra cứu</i></button>
+            </center>
+            
+             <div id="list_content"style="padding-bottom:40px">
+            <hr style="border-top: dashed 1px #70389e; margin-bottom:10px; margin-top:15px"/>
+            <div id="contentDiv"   style="padding-bottom:50px" class="ha" ng-show="tpos">
+                    <a ng-href="#/app/ebank-bill">
+                    <img src="img/nof.png" class="nti"/>
+                       Mã hóa đơn | P98593485908
+                       <a href="#/app/ebank-bill" class="ion-ios-cart" style="float: right; margin-right: 12px; font-size: 35px; color: #4B99CF;">
+                       </a>
+                    </a>
+                <hr style="border-top: dashed 1px #70389e; margin-bottom:10px; margin-top:15px"/>
+                    <a ng-href="#/app/ebank-bill">
+                    <img src="img/nof.png" class="nti"/>
+                        Mã hóa đơn | TP42387498274
+                        <a href="#/app/ebank-bill" class="ion-ios-cart" style="float: right; margin-right: 12px; font-size: 35px; color: #4B99CF;">
+                       </a>
+                    </a>
+                <hr style="border-top: dashed 1px #70389e; margin-bottom:10px; margin-top:15px"/>
+                    <a ng-href="#/app/ebank-bill">
+                    <img src="img/nof.png" class="nti"/>
+                        Mã hóa đơn | CC5438758347
+                        <a href="#/app/ebank-bill" class="ion-ios-cart" style="float: right; margin-right: 12px; font-size: 35px; color: #4B99CF;">
+                       </a>
+                    </a>
+                 <hr style="border-top: dashed 1px #70389e; margin-bottom:10px; margin-top:15px"/>
+                    <a ng-href="#/app/ebank-bill">
+                    <img src="img/nof.png" class="nti"/>
+                        Mã hóa đơn | AT4283748237
+                       <a href="#/app/ebank-bill" class="ion-ios-cart" style="float: right; margin-right: 12px; font-size: 35px; color: #4B99CF;">
+                       </a>
+                    </a>
+                <!--<div ng-bind-html="content.content">
+                </div>-->
+                <!--<hr/>-->
+            </div>
+            </div>
+            
+      </div>
+            <script language="javascript">
+                // chỉ nhập cho nhập số for firefox
+                function kaka(e, kakatexto) {
+                    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                        return false;
+                    }
+                }
+
+                //   format money input
+                // document.getElementById("amount").onkeyup = function () {
+                //     if (document.getElementById("amount").value != 0) {
+                //         this.value = parseFloat(this.value.replace(/,/g, ""))
+                //                         .toFixed()
+                //                         .toString()
+                //                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                //     }
+
+                // }
+            </script>
+  </ion-content>
+</ion-view>

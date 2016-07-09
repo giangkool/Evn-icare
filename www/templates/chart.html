@@ -1,0 +1,154 @@
+<style>
+     .S {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #da5350), color-stop(1, #da5350));
+	background:-moz-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-webkit-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-o-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-ms-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:linear-gradient(to bottom, #da5350 5%, #da5350 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#da5350', endColorstr='#da5350',GradientType=0);
+	background-color:#da5350;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:9px 14px;
+	text-decoration:none;
+}
+
+.padding{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+</style>
+<ion-view view-title="{{catalog.title}}" cache-view='false'>
+   <ion-content class="padding">
+     <form
+    <div class="list">
+        <!--<label class="item item-input">
+    <div class="input-label">
+      Chọn Năm
+    </div>
+        <select id="year" style="text-align:center;padding-top:5px;" ng-model="year" ng-init="year='2016'">
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015" selected="selected">2015</option>
+            <option value="2016">2016</option>
+        </select>
+  </label>-->
+    <table style="width:100%;">
+            <tr>
+                <td style="padding-left:10%; width:10%"></td>
+                <td>
+                    <label class="item item-input" style="width:80%; height:40px; border-radius:5px; border:none;"> 
+                        Từ
+                        <select id="year" style="width:100%; background:#fff; text-align:center;padding-top:5px; border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 22px; padding-left: 5px; min-height:37px" ng-model="search_data.year" ng-init="search_data.year='2015'">
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                        </select>
+                        <!--<input type="text" id="day1" ng-model="search_data.date" style="border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 20px; padding-left: 5px; min-height:37px">-->
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-left:10%">
+                </td>
+                <td>
+                    <label class="item item-input" style="width:80%; height:40px; border-radius:5px; border:none;">
+                        Đến
+                        <select id="year2" style="width:100%; text-align:center; background:#fff; padding-top:5px; border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 11px; padding-left: 5px; min-height:37px" ng-model="search_data.year2" ng-init="search_data.year2='2016'">
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                        </select>
+                    <!--<input type="text" id="day2" ng-model="search_data.date2" style="border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 10px; padding-left: 5px; min-height:37px">-->
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-left:10%">
+                </td>
+                <td>
+                <label class="item item-input" style="width:80%; height:40px; border-radius:5px; border:none;">
+                    Kỳ
+                        <select ng-model="search_data.period" ng-init="search_data.period='1'" style="width:100%; text-align:center; background:#fff; padding-top:5px; border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 23px; padding-left: 5px; min-height:37px">
+                            <option value="1" selected="selected">1</option>
+                            <option value="2" >2</option>
+                            <option value="3" >3</option>
+                        </select>
+                    </label>
+                </td>
+          </tr>
+        </table>  
+    
+    <center>
+      <button class="btnlogin button ion-ios-search"  ng-click="searchChartContent(search_data)" style="color:#fff"><i style="padding-left:5px">Tra cứu</i></button>
+    </center>
+    </form>
+    <div ng-hide="datagraph">
+      Không có thông tin nào!
+    </div>
+    <hr style="border-top: dashed 1px #70389e; margin-bottom:15px; margin-top:15px"/>
+    <div id="contentDiv"  ng-repeat="content in datagraph" style="padding-bottom:30px">
+        <div style="border:1px solid navy;">
+    <h5>{{title1}}</h5>
+    <canvas id="bar" class= "chart chart-bar" data="[content._listsodien1,content._listsodien2]" labels="content._month" 
+    series="series1" height="100px" width="100%"
+    chart-legend="true" 
+    colours = "[{
+    fillColor: '#2054E5',
+    strokeColor: '#2054E5',
+    highlightFill: '#2054E5',
+    highlightStroke: '#2054E5'
+},{
+     fillColor: '#FFFF00',
+    strokeColor: '#FFFF00',
+    highlightFill: '#FFFF00',
+    highlightStroke: '#FFFF00'
+}]"></canvas>
+</div>
+<div style="border:1px solid navy; margin-bottom:7px;">
+    <div style="clear: both;margin-top: 10px;"><h5>{{title2}}</h5></div>
+    <canvas id="bar" class="chart chart-bar" data="[content._listsodien1,content._listsodien2]" labels="content._month"
+    chart-legend="true" 
+    series="series2" height="100px" width="100%" colours = "[{
+     fillColor: '#2054E5',
+    strokeColor: '#2054E5',
+    highlightFill: '#2054E5',
+    highlightStroke: '#2054E5'
+},{
+   fillColor: '#FFFF00',
+    strokeColor: '#FFFF00',
+    highlightFill: '#FFFF00',
+    highlightStroke: '#FFFF00'
+}]"></canvas>
+    </div>
+         <script>
+        //     var e = document.getElementById("year");
+        //     var stryear = e.options[e.selectedIndex].value;
+        //     var strlyear=stryear-1;
+        //    document.getElementById("y1").innerText=stryear;
+        //    document.getElementById("y2").innerText=strlyear;
+        //    document.getElementById("y3").innerText=stryear;
+        //    document.getElementById("y4").innerText=strlyear;
+        //    document.getElementById("y5").innerText=stryear;
+        //    document.getElementById("y6").innerText=strlyear;
+        //    document.getElementById("y7").innerText=stryear;
+        //    document.getElementById("y8").innerText=strlyear;
+    </script>
+    </div>
+    <!--<hr style="clear:both"/>-->
+    </div>
+</div>
+   </ion-content>
+</ion-view>

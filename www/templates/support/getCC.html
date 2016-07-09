@@ -1,0 +1,85 @@
+<style>
+    .S {
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #da5350), color-stop(1, #da5350));
+        background: -moz-linear-gradient(top, #da5350 5%, #da5350 100%);
+        background: -webkit-linear-gradient(top, #da5350 5%, #da5350 100%);
+        background: -o-linear-gradient(top, #da5350 5%, #da5350 100%);
+        background: -ms-linear-gradient(top, #da5350 5%, #da5350 100%);
+        background: linear-gradient(to bottom, #da5350 5%, #da5350 100%);
+        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#da5350', endColorstr='#da5350', GradientType=0);
+        background-color: #da5350;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        display: inline-block;
+        cursor: pointer;
+        color: #ffffff;
+        font-family: Arial;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 9px 14px;
+        text-decoration: none;
+    }
+    
+    .padding {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+    
+    .ui-datepicker {
+        margin-left: -30px;
+        margin-top: 15px;
+    }
+    
+    .ha a {
+        text-decoration: none;
+    }
+    
+    table,
+    th,
+    td {
+        padding: 5px;
+    }
+    
+    .icskh {
+        width: 35px;
+        height: 35px;
+        margin-bottom: -40px;
+        margin-right: 5px;
+    }
+    
+    #wrapper {
+        /*background: #ccc;*/
+        overflow: hidden;
+        transition: height 200ms;
+        margin-left: 14%;
+        margin-top: -20px;
+    }
+</style>
+<ion-view view-title="Tổng đài CSKH" cache-view="true" hide-back-button="false">
+    <ion-content class="padding">
+        <div>
+            <div id="list_content" style="padding-bottom:40px">
+                <!--<hr style="border-top: dashed 1px #70389e; margin-bottom:10px;" />-->
+                <div id="contentDiv"class="ha" ng-repeat="content in contents">
+                    <a id="button">
+                        <img src="img/nof.png" class="icskh" /> 
+                        <div id="wrapper" class="open">
+                            <ul id="list">
+                                <li style="color:#3879D9">{{content.title}}</li>
+                                <li style="padding-top:7px">Số điện thoại : {{content.contactnumber}}</li>
+                                <li style="padding-top:7px">Email : {{content.emailaddress}}</li>
+                            </ul>
+                        </div>
+                    </a>
+                    <hr style="border-top: dashed 1px #70389e; margin-bottom:10px; margin-top:10px" />
+                    <!--<div ng-bind-html="content.content">
+                </div>-->
+                    <!--<hr/>-->
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

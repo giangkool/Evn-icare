@@ -1,0 +1,101 @@
+  <style>
+  .img{
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    border:3px solid #F8F8F8;
+    margin-top: 10px;
+  }
+  .ch{
+         width: 33%;
+         height: 50px;
+         text-align: center;
+         margin-top: 20px;
+         font-weight: 700;
+     }
+     .ciclesu{
+         border-radius: 6px;
+         margin-left: 10px;
+         font-size: 40px;
+         padding-left: 10px;
+         padding-right: 10px;
+         color: #fff;
+     }
+     .dmenu{
+       width: 20%;
+       max-width: 130px;
+       height: 50px;
+       border:none;
+     }
+     
+      .footer{
+            clear: both;
+            position: absolute;
+            z-index: 10;
+            height: 43px;
+            margin-top: 60px;
+            margin-bottom: -10px;
+            /*margin-left: -100px;
+            margin-right: -100px;*/
+            /*min-width: 118px;*/
+            min-width: 100%;
+            text-align: center;
+            font-size: 11px;
+            color: #fff;
+            bottom: 0;
+     }
+      .item-complex.item-icon-left .item-content {
+      padding-left: 54px;
+      padding-right: 30px;
+    }
+</style>
+
+<ion-view view-title="HỖ TRỢ" cache-view="false" hide-back-button="true">
+  <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear" menu-toggle="left">
+            <img src="img/DICH_VU/dm.png">
+        </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="button-bar" style="width:100%; margin-top:0px;">
+                      <div class="ch" style="width:31%;">
+                          <a ng-click="popup()" class="ciclesu ion-speakerphone" style="border: 1px solid #008FFF;background:#008FFF; padding-top:3px; padding-bottom:2px ;padding-left:10px; padding-right:10px;-webkit-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);-moz-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);"></a> 
+                       <br/><br/><span style="color:#000;margin-left:5px; font-size:11px;font-weight: 500;">Thông báo sự cố
+</span>
+                      </div>
+                      <div class="ch"> 
+                          <a ng-click="popup()" class="ciclesu ion-android-chat" style="border: 1px solid #D14413;background:#D14413; padding-top:3px; padding-bottom:2px ;padding-left: 11px; padding-right: 11px;-webkit-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);-moz-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);"></a>
+                          <br/><br/>
+                          <span style="color:#000;margin-left:5px; font-size:11px;font-weight: 500;">Ý kiến góp ý
+</span>
+                      </div>
+                      <div class="ch">
+                        <a ng-href="#/app/rating" class="ciclesu ion-checkmark-circled" style="border: 1px solid #CF2500;background:#CF2500; padding-top:3px; padding-bottom:2px ;padding-left:10px; padding-right:10px;-webkit-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);-moz-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);"></a> 
+                        <br/><br/>
+                        <span style="color:#000;margin-left:5px; font-size:11px;font-weight: 500;">Đánh giá dịch vụ
+
+</span>
+                     </div>   
+        </div>
+
+        <div class="button-bar" style="width:100%; margin-top:50px;">
+                      <div class="ch" style="width:30%">
+                          <a href="#/app/getcc" class="ciclesu ion-person-stalker" style="border: 1px solid #F85623;background:#F85623; padding-top:3px; padding-bottom:2px ;padding-left:10px; padding-right:10px;-webkit-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);-moz-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);"></a> 
+                       <br/><br/><span style="color:#000;margin-left:5px; font-size:11px;font-weight: 500;">Tổng đài CSKH
+</span>
+                      </div>
+                      <div class="ch"> 
+                          <a ng-click="popup()" class="ciclesu ion-ios-more-outline" style="border: 1px solid #8E44AD;background:#8E44AD; padding-top:3px; padding-bottom:2px ;padding-left: 14px; padding-right: 15px;-webkit-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);-moz-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);"></a>
+                          <br/><br/>
+                          <span style="color:#000;margin-left:5px; font-size:11px;font-weight: 500;">Các yêu cầu khác
+</span>
+                      </div>
+                                            <div class="ch"> 
+                          <a ng-click="about()" class="ciclesu ion-ios-information-outline" style="border: 1px solid #3AAAFB;background:#3AAAFB; padding-top:3px; padding-bottom:2px ;padding-left: 11px; padding-right: 12px;-webkit-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);-moz-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);"></a>
+                          <br/><br/>
+                          <span style="color:#000;margin-left:5px; font-size:11px;font-weight: 500;">Thông tin ứng dụng </span>
+                      </div>
+        </div>
+  </ion-content>
+  
+</ion-view>

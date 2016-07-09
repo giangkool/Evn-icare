@@ -1,0 +1,12 @@
+<ion-view view-title="TRA CỨU THÔNG TIN" cache-view="true" enable-menu-with-back-views="false">
+  <ion-content>
+    <div class="list card">
+  <a class="item item-icon-left menu-color" ng-repeat="catalog in catalogs" href="{{catalog.href}}">
+    <i class='icon ion-{{catalog.icon}}'></i>
+        {{catalog.title}}
+  </a>
+</div>
+  </ion-content>
+  
+  
+</ion-view>

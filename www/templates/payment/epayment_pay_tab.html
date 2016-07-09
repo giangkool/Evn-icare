@@ -1,0 +1,311 @@
+<style>
+    .input-label {
+        font-size: 13px;
+    }
+</style>
+<ion-view view-title="<center>Thanh toán </center>" enable-menu-with-back-views="false" hide-back-button="false" cache-view='false'>
+    <ion-content class="padding">
+        <div ng-if="!atm">
+            <form novalidate ng-if="!data_is_ok" style="padding-top:10px">
+                <!--<label class="item item-input">
+                <span class="input-label" style="color:#BDBDBD">Giá tiền</span>
+                <input type="text" ng-model="search_data.account" required>
+                </label>-->
+                <label class="item item-input">
+                <span class="input-label" style="color:#BDBDBD">Tài khoản</span>
+                <input type="text" ng-model="search_data.user"  required>
+                </label>
+                <label class="item item-input" style="margin-top:10px">
+                <span class="input-label" style="color:#BDBDBD">Mật khẩu</span>
+                <input type="password" ng-model="search_data.pass" required>
+                </label>
+                <center>
+                    <button class="btnpayment2 button" type="submit" ng-click="searchContent(search_data);">Đồng ý</button>
+                    <a class="btnpayment button" ng-click="clear_data()" type="submit" style="color:#fff" href="#/app/epayment-tappay">Hủy</a>
+                </center>
+                <p style="padding-top:10px; color:red; font-size:15px">{{error_message}}</p>
+            </form>
+        </div>
+
+        <div ng-if="atm">
+            <form ng-if="!data_is_ok2">
+                <!--<label class="item item-input">
+                        <span class="input-label" style="color:#BDBDBD">Tên in trên thẻ</span>
+                        <input type="text" required>
+                        </label>
+                <label class="item item-input">
+                        <span class="input-label" style="color:#BDBDBD">Số thẻ</span>
+                        <input type="text" onkeypress="return number(event, this)" required>
+                        </label>
+                <label class="item item-input">
+                        <span class="input-label" style="color:#BDBDBD">Ngày hiệu lực</span>
+                        <input type="text" id="month" required>
+                        </label>-->
+                        <iframe frameborder="0" allowfullscreen ng-src="{{url(murl.src)}}"></iframe>
+                        <!--<script>$("#testLoad").load("{{url(murl.src)}}");</script>
+                        <div id="testLoad"></div>-->
+              <center>
+                <button class="btnpayment button" type="submit" style="margin-right:5px"  href="#/app/epayment-tappay" >Đồng ý</button>
+               <a class="btnpayment2 button" type="submit" style="margin-left:5px; color:#fff" href="#/app/epayment-tappay">Hủy</a>
+            </center>
+        </form>
+            <form novalidate ng-if="data_is_ok2" style="padding-top:10px">
+                <div class="list card" ng-if="pay_ok">
+                    <div class="item item-divider">
+                        <center style="color:#006E18">Giao dịch thành công</center>
+                    </div>
+                    <div class="padding">
+                        <table>
+                            <tr>
+                                <td>
+                                    <h5 style="color:#000; padding-top:5px; width:120px">Mã khách hàng: </h5></td>
+                                <td style="color:#006E18">{{invoices.data.customer._id}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5 style="color:#000; padding-top:5px; width:120px">Tên khách hàng: </h5></td>
+                                <td>{{invoices.data.customer.name}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5 style="color:#000; padding-top:5px; width:120px">Nội dung: </h5></td>
+                                <td>{{invoices.data.note}}</td>
+                            </tr>
+                            <!--<tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:120px">Địa chỉ: </h5></td>
+                                <td>{{content.address}}</td>
+                            </tr>-->
+                            <tr>
+                                <td>
+                                    <h5 style="color:#000; padding-top:5px; width:120px">Số tiền: </h5></td>
+                                <td>{{amount}} VNĐ</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5 style="color:#000; padding-top:5px; width:120px">Mã giao dịch: </h5></td>
+                                    <td style="color:#006E18">gncgroup20163042511<br/>5001634</td>
+                                <!--<td style="color:#006E18">{{trans_id}}</td>-->
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5 style="color:#000; padding-top:5px; width:120px">Trạng thái: </h5></td>
+                                <td style="color:#006E18">Đã thanh toán</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <center>
+                                        <!--<button class="btnpayment2 button" type="submit" ng-click="searchContent(search_data);">Đồng ý</button>-->
+                                        <a class="btnpayment2 button" type="submit" style="color:#fff; background:#006E18" ng-click="clear_data()" href="#/app/epayment-tappay">Đồng ý</a>
+                                    </center>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!--error_code # 0-->
+                <div class="list card" ng-if="!pay_ok">
+                    <div class="item item-divider">
+                        <center style="color:red">Giao dịch không thành công</center>
+                    </div>
+                    <div class="padding">
+                        <table>
+                            <tr>
+                                <td>
+                                    <h5 style="color:#000; padding-top:5px; width:120px">Mã khách hàng: </h5></td>
+                                <td style="color:red">{{invoices.data.customer._id}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5 style="color:#000; padding-top:5px; width:120px">Tên khách hàng: </h5></td>
+                                <td>{{invoices.data.customer.name}}</td>
+                            </tr>
+                            <!--<tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:120px">Địa chỉ: </h5></td>
+                                <td>{{content.address}}</td>
+                            </tr>-->
+                            <tr>
+                                <td>
+                                    <h5 style="color:#000; padding-top:5px; width:120px">Nội dung: </h5></td>
+                                <td>{{invoices.data.note}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5 style="color:#000; padding-top:5px; width:120px">Số tiền: </h5></td>
+                                <td>{{amount}} VNĐ</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5 style="color:#000; padding-top:5px; width:120px">Chi tiết: </h5></td>
+                                <td style="color:red">{{error_message}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5 style="color:#000; padding-top:5px; width:120px">Trạng thái: </h5></td>
+                                <td style="color:red">Chưa thanh toán</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <center>
+                                        <!--<button class="btnpayment2 button" type="submit" ng-click="searchContent(search_data);">Đồng ý</button>-->
+                                        <a class="btnpayment2 button" type="submit" style="color:#fff; background:red" ng-click="clear_data()" href="#/app/epayment-tappay">Đồng ý</a>
+                                    </center>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--error_code = 0-->
+        <form ng-if="data_is_ok">
+            <div class="list card" ng-if="pay_ok2">
+                <div class="item item-divider">
+                    <center style="color:#006E18">Giao dịch thành công</center>
+                </div>
+                <div class="padding">
+                    <table>
+                        <tr>
+                            <td>
+                                <h5 style="color:#000; padding-top:5px; width:120px">Mã khách hàng: </h5></td>
+                            <td style="color:#006E18">{{invoices.data.customer._id}}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5 style="color:#000; padding-top:5px; width:120px">Tên khách hàng: </h5></td>
+                            <td>{{invoices.data.customer.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5 style="color:#000; padding-top:5px; width:120px">Nội dung: </h5></td>
+                            <td>{{invoices.data.note}}</td>
+                        </tr>
+                        <!--<tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:120px">Địa chỉ: </h5></td>
+                                <td>{{content.address}}</td>
+                            </tr>-->
+                        <tr>
+                            <td>
+                                <h5 style="color:#000; padding-top:5px; width:120px">Số tiền: </h5></td>
+                            <td>{{amount}} VNĐ</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5 style="color:#000; padding-top:5px; width:120px">Mã giao dịch: </h5></td>
+                                 <td style="color:#006E18">gncgroup20163042511<br/>5001634</td>
+                            <!--<td style="color:#006E18">{{trans_id}}</td>-->
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5 style="color:#000; padding-top:5px; width:120px">Trạng thái: </h5></td>
+                            <td style="color:#006E18">Đã thanh toán</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <center>
+                                    <!--<button class="btnpayment2 button" type="submit" ng-click="searchContent(search_data);">Đồng ý</button>-->
+                                    <a class="btnpayment2 button" type="submit" style="color:#fff; background:#006E18" ng-click="clear_data()" href="#/app/epayment-tappay">Đồng ý</a>
+                                </center>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!--error_code # 0-->
+            <div class="list card" ng-if="!pay_ok2">
+                <div class="item item-divider">
+                    <center style="color:red">Giao dịch không thành công</center>
+                </div>
+                <div class="padding">
+                    <table>
+                        <tr>
+                            <td>
+                                <h5 style="color:#000; padding-top:5px; width:120px">Mã khách hàng: </h5></td>
+                            <td style="color:red">{{invoices.data.customer._id}}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5 style="color:#000; padding-top:5px; width:120px">Tên khách hàng: </h5></td>
+                            <td>{{invoices.data.customer.name}}</td>
+                        </tr>
+                        <!--<tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:120px">Địa chỉ: </h5></td>
+                                <td>{{content.address}}</td>
+                            </tr>-->
+                        <tr>
+                            <td>
+                                <h5 style="color:#000; padding-top:5px; width:120px">Nội dung: </h5></td>
+                            <td>{{invoices.data.note}}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5 style="color:#000; padding-top:5px; width:120px">Số tiền: </h5></td>
+                            <td>{{amount}} VNĐ</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5 style="color:#000; padding-top:5px; width:120px">Chi tiết: </h5></td>
+                            <td style="color:red">{{error_message}}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5 style="color:#000; padding-top:5px; width:120px">Trạng thái: </h5></td>
+                            <td style="color:red">Chưa thanh toán</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <center>
+                                    <!--<button class="btnpayment2 button" type="submit" ng-click="searchContent(search_data);">Đồng ý</button>-->
+                                    <a class="btnpayment2 button" type="submit" style="color:#fff; background:red" ng-click="clear_data()" href="#/app/epayment-tappay">Đồng ý</a>
+                                </center>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </form>
+        <!--autocomplete-->
+        <script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
+        <script type="text/javascript" src="js/currency-autocomplete.js"></script>
+        <script language="javascript">
+             $('#month').monthpicker();
+             $(document).click(function (e) {
+            var ele = $(e.target);
+            if (!ele.hasClass("hasDatepicker") && !ele.hasClass("ui-datepicker") && !ele.hasClass("ui-icon") && !$(ele).parent().parents(".ui-datepicker").length)
+                $(".hasDatepicker").datepicker("hide");
+        });
+            // chỉ nhập cho nhập số for firefox
+                    function number(e, kakatexto) {
+                        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                            return false;
+                        }
+                    }
+                    
+                     //format money input
+                // document.getElementById("amount").onkeyup = function () {
+                //     if (document.getElementById("amount").value != 0) {
+                //         this.value = parseFloat(this.value.replace(/,/g, ""))
+                //                         .toFixed()
+                //                         .toString()
+                //                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                //     }
+
+                // }
+
+                function reSize()
+                {
+                    try{	
+                    var oBody	=	ifrm.document.body;
+                    var oFrame	=	document.all("ifrm");
+                        
+                    oFrame.style.height = oBody.scrollHeight + (oBody.offsetHeight - oBody.clientHeight);
+                    oFrame.style.width = oBody.scrollWidth + (oBody.offsetWidth - oBody.clientWidth);
+                    }
+                    //An error is raised if the IFrame domain != its container's domain
+                    catch(e)
+                    {
+                    window.status =	'Error: ' + e.number + '; ' + e.description;
+                    }
+                }
+        </script>
+    </ion-content>
+</ion-view>

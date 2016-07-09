@@ -1,0 +1,74 @@
+<style> 
+  .S {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #da5350), color-stop(1, #da5350));
+	background:-moz-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-webkit-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-o-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-ms-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:linear-gradient(to bottom, #da5350 5%, #da5350 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#da5350', endColorstr='#da5350',GradientType=0);
+	background-color:#da5350;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:9px 14px;
+	text-decoration:none;
+}
+
+.padding{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.ui-datepicker {
+                margin-left: -30px;
+                margin-top: 15px;
+            }
+            .ha a{
+                text-decoration: none;
+            }
+ /*table, th, td {
+    padding: 5px;
+}*/
+</style>
+<ion-view view-title="Thông tin hợp đồng" cache-view="true" enable-menu-with-back-views="false">
+  <ion-content class="padding">    
+      <center>         
+                 <div ng-repeat="content in contents" style="padding-top:15px; padding-bottom:50px;">
+                    <table style="width:95%">
+                            <tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:150px">Tên khách hàng :   </h5></td>
+                                <td style="color:#3879D9">{{content.customername}}</td>
+                            </tr>
+                            <tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:150px">Mã khách hàng : </h5></td>
+                                <td>{{content.customerid}}</td>
+                            </tr>
+                            <tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:150px">Thời gian : </h5></td>
+                                <td>{{content.month}}/{{content.year}}</td>
+                            </tr>
+                            <tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:150px">Loại hình : </h5></td>
+                                <td>{{content.type}}</td>
+                            </tr>
+                            <tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:150px">Chỉ số : </h5></td>
+                                <td>{{content.faracount}}</td>
+                            </tr>
+                            <tr>
+                                <td><h5 style="color:#000; padding-top:5px; width:150px">Số tiền thanh toán : </h5></td>
+                                <td>{{content.totaldebt}} VND</td>
+                            </tr>
+                    </table>   
+                </div>
+      </center>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,153 @@
+<style>
+  .img{
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    border:3px solid #F8F8F8;
+    margin-top: 10px;
+  }
+  .heder{
+    background: url('img/home/banner1.png');
+    background-size: cover;
+    width:100%; height:170px;
+    margin-top: -10px;
+  }
+  .ch{
+         width: 33%;
+         height: 50px;
+         text-align: center;
+         margin-top: 20px;
+         font-weight: 700;
+     }
+     .cicle{
+         /*border-radius: 100px;*/
+         margin-left: 20px;
+         font-size: 40px;
+         padding-left: 10px;
+         padding-right: 10px;
+         color: #fff;
+     }
+     .cicle img{
+      margin-top:-9px;
+     }
+     .dmenu{
+       width: 20%;
+       max-width: 130px;
+       height: 50px;
+       border:none;
+     }
+      .footer{
+            clear: both;
+            position: absolute;
+            z-index: 10;
+            height: 43px;
+            margin-top: 60px;
+            margin-bottom: -10px;
+            /*margin-left: -100px;
+            margin-right: -100px;*/
+            /*min-width: 118px;*/
+            min-width: 100%;
+            text-align: center;
+            font-size: 11px;
+            color: #fff;
+            bottom: 0;
+     }
+      
+      .item-complex.item-icon-left .item-content {
+      padding-left: 54px;
+      padding-right: 30px;
+    }
+</style>
+<ion-view style="text-align:center; color:#000" view-title="<center>XIN CHÀO</center>"  cache-view="false" hide-back-button="true">
+ <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear" menu-toggle="left">
+        <img src="img/DICH_VU/dm.png">
+    </button>
+  </ion-nav-buttons>
+<ion-content class="has-header">
+        <center class="heder">
+            <!--<img src="img/home/banner1.jpg" class="img">-->
+            <h4 style="color:#fff; padding-top:107px">{{user.full_name}}</h4>
+            <hr style="width:80%; border-style: outset;">
+            <div style="height:auto; width:80%">
+               <p style="color:#fff; text-align:left;font-size: 13px; margin-bottom:0px;margin-top:4px">MÃ KH: {{user.user_name}}</p>
+               <!--<p style="color:#fff; text-align:left;font-size: 13px;">{{user.address}}</p>-->
+            </div>
+        </center>
+    <div>
+      <div style="height:auto; width:80%; margin:auto;">
+                <!--<img src="img/home/thongbaomoi.png" style="float:left;margin-right:5px">  <p style="color:red; text-align:left;font-size: 13px; margin-bottom:0px;margin-top:7px"> Bạn có 10 thông báo mới !</p>-->
+               <!--<p style="color:#fff; text-align:left;font-size: 13px;">{{user.address}}</p>-->
+      </div>
+            <div class="button-bar" style="width:100%; margin-top:0px;">
+                      <div class="ch" style="width:30%">
+                          <!--<a ng-click="popup()" class="cicle" style="background: url('img/home/lichghisodien.png');;border: 1px solid;color: #2685BD;padding-left: 13px; padding-right: 0px;;color:#2685BD;-webkit-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);-moz-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);">
+                          </a> -->
+                          <a ng-href="#/app/infolist/565291c025062bee7f3e5d5c/month" class="cicle"> <img src="img/home/lichghisodien.png" width="54.5px" height="55px">
+                          <!--<img src="img/home/st1.png" width="19px" height="19px" style="margin-bottom: 36px;margin-left: -15px;">-->
+                         </a>
+                       <br/><span style="color:#000;margin-left:15px; font-size:11px;font-weight: 500;">Lịch ghi chỉ số</span>
+                      </div>
+                      <div class="ch"> 
+                          <!--<a ng-click="popup()" class="cicle ion-clipboard" style="border: 1px solid;color: #3ABCFF;padding-left: 13px; padding-right: 12px;-webkit-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);-moz-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);"></a>
+                          <br/><br/>-->
+                          <a ng-href="#/app/infolist/5652929e25062bee7f3e5d5e/period" class="cicle"> <img src="img/home/tracuuhoadon.png" width="54.5px" height="55px"></a>
+                       <br/>
+                          <span style="color:#000;margin-left:15px; font-size:11px;font-weight: 500;">Tra cứu hoá đơn</span>
+                      </div>
+                      <div class="ch">
+                        <!--<a ng-click="popup()" class="cicle ion-social-usd-outline" style="border: 1px solid;color: #8C3177;padding-left:14px; padding-right:15px;-webkit-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);-moz-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);"></a> 
+                        <br/><br/>-->
+                         <a ng-href="#/app/infolist/565292d525062bee7f3e5d60/period" class="cicle"> <img src="img/home/tracuutiendien.png" width="54.5px" height="55px"></a>
+                       <br/>
+                        <span style="color:#000;margin-left:7px; font-size:11px;font-weight: 500;">Chỉ số điện tiêu thụ</span>
+                     </div>   
+            </div>
+        
+        <div class="button-bar" style="width:100%; margin-top:30px;">
+                      <div class="ch" style="width:30%">
+                          <!--<a ng-click="popup()" class="cicle ion-arrow-swap" style="border: 1px solid;color:#CF4344;padding-left: 13px;padding-right: 12px;-webkit-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);-moz-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);"></a>                    
+                       <br/><br/>-->
+                        <a ng-href="#/app/chart/566e26f71a2b8c036a9f0b15" class="cicle"> <img src="img/home/lichsu.png" width="54.5px" height="55px"></a>
+                       <br/>
+                       <span style="color:#000;margin-right:-25px; font-size:11px;font-weight: 500;">Lịch sử sử dụng điện</span>
+                      </div>
+                      
+                      <div class="ch"> 
+                          <!--<a ng-click="popup()" class="cicle ion-cash" style="border: 1px solid;color:#FD9C31; padding-left:7px; padding-right:7px;-webkit-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);-moz-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);"></a>
+                          <br/><br/>-->
+                           <!--<a ng-href="#/app/detail/5652932c25062bee7f3e5d62" class="cicle"> <img src="img/home/bieugia.png" width="54.5px" height="55px"></a>-->
+                           <a ng-href="#/app/infolist/5652932c25062bee7f3e5d62/type" class="cicle"> <img src="img/home/bieugia.png" width="54.5px" height="55px"></a>
+                       <br/>
+                          <span style="color:#000;margin-left:15px; font-size:11px;font-weight: 500;">Biểu giá điện</span>
+                      </div>
+                      <div class="ch">
+                        <!--<a ng-click="popup()" class="cicle ion-calendar" style="border: 1px solid;color:#7AC13F; padding-left:9px; padding-right:10px;-webkit-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);-moz-box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);box-shadow: 0px 14px 24px -10px rgba(0,0,0,0.56);"></a> 
+                        <br/><br/>-->
+                         <a ng-href="#/app/infolist/5652931625062bee7f3e5d61/date" class="cicle"> <img src="img/home/lichcatdien.png" width="54.5px" height="55px"> 
+                         <!--<img src="img/home/st2.png" width="19px" height="19px" style="margin-bottom: 35px;margin-left: -28px;">-->
+                         </a>
+                       <br/>
+                        <span style="color:#000;margin-left:20px; font-size:11px;font-weight: 500;">Lịch cắt điện</span>
+                     </div>   
+        </div>
+         <div class="button-bar" style="width:100%; margin-top:30px; margin-bottom:70px;">
+                      <div class="ch"  style="margin-bottom:10px; width:30%">
+                          <a ng-click="popup()" ng-href="#/app/infolist/5652933e25062bee7f3e5d63" class="cicle ion-connection-bars" style="border-radius:70px;border: 1px solid;color:#26C9DA;padding-left: 11px;padding-right: 12px;"></a>                    
+                       <br><br/><span style="color:#000;margin-left:15px; font-size:11px;font-weight: 500;">Tiến độ cấp mới</span>
+                      </div>
+        </div>
+        
+  </div>
+       
+    <!--<button class="button icon-left ion-log-out" ng-click="signOut()">Thoát</button>
+    <a class="button button-balanced icon-left ion-ios-help" ng-href="tel:19001288">Hỗ trợ</a>
+    <a  ng-click="changePass()" class="button icon-left ion-android-lock" style="margin-top:10px;" href='#'>Đổi mật khẩu</a>-->
+          <!--<ion-item class="item item-icon-left menu-color" menu-close ng-click="login()">
+            <i class="icon ion-log-in"></i>
+          Đăng nhập
+        </ion-item>-->
+    </ion-content>
+    
+</ion-view>
+

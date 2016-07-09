@@ -1,0 +1,88 @@
+<style> 
+  .S {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #da5350), color-stop(1, #da5350));
+	background:-moz-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-webkit-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-o-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-ms-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:linear-gradient(to bottom, #da5350 5%, #da5350 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#da5350', endColorstr='#da5350',GradientType=0);
+	background-color:#da5350;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:9px 14px;
+	text-decoration:none;
+}
+
+.padding{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.ui-datepicker {
+                margin-left: -30px;
+                margin-top: 15px;
+            }
+            .ha a{
+                text-decoration: none;
+            }
+ table, th, td {
+    padding: 5px;
+}
+</style>
+<ion-view view-title="Lịch sử giao dịch" cache-view="true" enable-menu-with-back-views="false">
+  <ion-content class="padding">
+      <div>
+          <center>
+                <table style="width:100%; margin-top:10px;">
+                     <tr>
+                        <td colspan="2">
+                            <label class="item item-input">
+                                <span class="input-label" style="text-align:left; font-size:15px; margin-right:5px; color:#0170BC">Số tài khoản</span>
+                                 <select ng-model="search_data.infou" id="selectPointOfInterest" ng-options="info.value for info in info_user" style="border:none; height:34px" required>
+                                </select>
+                            </label>
+                        </td>
+                    </tr>
+                      <tr>
+                        <td colspan="2">
+                            <label class="item item-input">
+                                <span class="input-label" style="text-align:left; font-size:15px; margin-right:5px; color:#0170BC">Từ ngày</span>
+                                <input type="text" id="day1" ng-model="search_data.fromday" style="background: #fff;">
+                            </label>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td colspan="2">
+                            <label class="item item-input">
+                                <span class="input-label" style="text-align:left; font-size:15px; margin-right:5px; color:#0170BC">Đến ngày</span>
+                               <input type="text" id="day2" ng-model="search_data.today" style="background: #fff;">
+                            </label>
+                        </td>
+                    </tr>
+                </table> 
+            </center>
+           
+            <center style="margin-bottom:15px">
+                <button type="submit" class="btnlogin button ion-ios-search" ng-click="done(); searchContent(search_data)" style="color:#fff"><i style="padding-left:5px;">Tra cứu</i></button>
+            </center>
+      </div>
+            <script language="javascript">
+                $( "#day1" ).datepicker({ dateFormat: 'dd/mm/yy' });
+                $( "#day2" ).datepicker({ dateFormat: 'dd/mm/yy' });
+                $(document).click(function (e) {
+                    var ele = $(e.target);
+                    if (!ele.hasClass("hasDatepicker") && !ele.hasClass("ui-datepicker") && !ele.hasClass("ui-icon") && !$(ele).parent().parents(".ui-datepicker").length)
+                        $(".hasDatepicker").datepicker("hide");
+                });
+            </script>
+  </ion-content>
+</ion-view>

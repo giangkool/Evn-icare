@@ -1,0 +1,135 @@
+﻿<style>
+  a.item-content {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    border: none;
+    font-size: 15px;
+  }
+  
+  .item-complex .item-content,
+  .item-radio .item-content {
+    position: relative;
+    z-index: 2;
+    padding: 12px 49px 16px 16px;
+    /*border: none;*/
+    background-color: #fff;
+  }
+  
+  .icon {
+    font-size: 15px;
+  }
+  
+  .menu-animated {
+    -webkit-transition: 550ms !important;
+    transition: 550ms !important;
+  }
+  
+ion-side-menu-content {
+  /*box-shadow: rgb(41, 41, 41) -1px 0px 6px 0px !important;*/
+    box-shadow:inset -5px 0 5px #ccc;
+}
+
+ .fader {
+    position: absolute;
+    display: block; 
+    height: 100%; 
+    width: 100%; 
+    background: rgba(0,0,0,.8); 
+    opacity: 0; 
+    z-index: -1; 
+    } 
+
+</style>
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-tabs class="tabs-color-assertive tabs-icon-top" ng-if=!isLogin>
+
+      <ion-tab title="Thông tin" icon-off="ion-home" icon-on="ion-home" href="#/app/home">
+      </ion-tab>
+
+      <ion-tab title="Dịch vụ" icon-off="ion-ios-cloud" icon-on="ion-ios-cloud" href="#/app/service">
+      </ion-tab>
+
+      <ion-tab title="Thanh toán" icon-off="ion-card" icon-on="ion-card" href="#/app/payment">
+      </ion-tab>
+      <ion-tab title="Trợ giúp" icon-off="ion-ios-help" icon-on="ion-ios-help" href="#/app/support">
+      </ion-tab>
+      <ion-tab title="Tin tức" icon-off="ion-ios-paper" icon-on="ion-ios-paper" href="#/app/news">
+      </ion-tab>
+
+    </ion-tabs>
+    <ion-nav-bar class="bar-stable bar-positive menu-background-color-2" style="border-color:#F8F8F8;background-color:#F8F8F8;">
+      <ion-nav-back-button style="color:#000;">
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear" menu-toggle="left">
+        <img src="img/DICH_VU/dm.png">
+        </button>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <button class="button icon-left" ng-click="signOut()" style="border-color:#F8F8F8;background-color:#F8F8F8;border:none;">
+          <img src="img/DICH_VU/out.png" style="padding-top:5px; height:29px">
+          </button>
+        <!--<button class="button button-icon button-clear ion-android-exit" ng-click="signOut()"></button>-->
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-nav-view name="menuContent" style="color:#000; border-color:#F8F8F8;background-color:#F8F8F8;">
+    </ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" width="240" class="leftMenu">
+    <!--<ion-header-bar class="bar-stable bar-positive menu-background-color-2" style="border-color:#F8F8F8;background-color:#F8F8F8;text-align:center">
+      <h1 class="title" style="color:#4791A5;">MENU</h1>
+    </ion-header-bar>-->
+    <ion-content class="has-footer has-wallet">
+      <ion-list class="list card">
+        <ion-item>
+          <center style="margin-top:-25px"><img width="120" height="120" src='img/icon.png' /></center>
+        </ion-item>
+        <ion-item class="item item-icon-left menu-color" menu-close ng-href="#/app/home" style="border-top: dashed 1px #70389e;">
+          <i class="icon ion-home"></i> Thông tin
+        </ion-item>
+        <!--<ion-item class="item item-icon-left menu-color" menu-close href="#/app/info">
+        <i class="icon ion-ios-search-strong"></i>
+          Tra cứu
+        </ion-item>-->
+        <ion-item class="item item-icon-left menu-color" menu-close href="#/app/service" style="border-top: dashed 1px #70389e;">
+          <i class="icon ion-ios-cloud"></i> Dịch vụ
+        </ion-item>
+        <ion-item class="item item-icon-left menu-color" menu-close href="#/app/payment" style="border-top: dashed 1px #70389e;">
+          <i class="icon ion-card"></i> Thanh toán
+        </ion-item>
+        <ion-item class="item item-icon-left menu-color" menu-close href="#/app/support" style="border-top: dashed 1px #70389e;">
+          <i class="icon ion-ios-help"></i> Hỗ trợ
+        </ion-item>
+        <ion-item class="item item-icon-left menu-color" menu-close href="#/app/news" style="height:50px; border-top: dashed 1px #70389e;">
+          <i class="icon ion-ios-paper"></i> Tin tức
+        </ion-item>
+        <ion-item class="item item-icon-left menu-color" menu-close href="#/app/account" style="border-top: dashed 1px #70389e;">
+          <i class="icon ion-ios-person"></i> Tài khoản
+          </a>
+        </ion-item>
+        <ion-item class="item item-icon-left menu-color" menu-close href="#" style="border-top: dashed 1px #70389e;">
+          <a ng-click="signOut()">
+            <i class="icon ion-android-exit"></i> Đăng xuất
+          </a>
+
+          <!--<a ng-click="signOut()">
+              <button class="button icon-left" style="background:#fff;border:none;margin-left:-55px">
+            <img src="img/DICH_VU/out.png" style="padding-top:5px; height:29px">
+            </button>
+            Đăng xuất
+          </a>-->
+        </ion-item>
+        <ion-item class="item item-icon-left menu-color" style="border-top: dashed 1px #70389e;">
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
+<!--<div class="bar bar-footer" ng-if="!isLogin">
+      
+</div>-->

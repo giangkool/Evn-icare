@@ -1,0 +1,235 @@
+<style> 
+  .S {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #da5350), color-stop(1, #da5350));
+	background:-moz-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-webkit-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-o-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:-ms-linear-gradient(top, #da5350 5%, #da5350 100%);
+	background:linear-gradient(to bottom, #da5350 5%, #da5350 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#da5350', endColorstr='#da5350',GradientType=0);
+	background-color:#da5350;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:9px 14px;
+	text-decoration:none;
+}
+
+/*.padding{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 3px;
+    padding-right: 3px;
+}*/
+
+</style>
+<ion-view view-title="<center>{{catalog.title}}</center>" cache-view='false' enable-menu-with-back-views="false">
+   <ion-content class="padding">
+     <form
+    <div>
+    <!--//////////////////////////////-->
+    <table style="width:100%;" ng-show="query_date">
+        <tr>
+            <td colspan="2">
+                <label class="item item-input">
+                    <span class="input-label" style="text-align:center">Từ</span>
+                    <input type="text" id="day1" ng-model="search_data.date">
+                </label>
+                <!--<label class="item item-input" style="width:80%; height:40px; border-radius:5px; border:none;"> 
+                    Từ
+                    <input type="text" id="day1" ng-model="search_data.date" style="border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 20px; padding-left: 5px; min-height:37px">
+                </label>-->
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label class="item item-input">
+                    <span class="input-label" style="text-align:center">Đến</span>
+                    <input type="text" id="day2" ng-model="search_data.date2">
+                </label>
+                <!--<label class="item item-input" style="width:80%; height:40px; border-radius:5px; border:none;">
+                    Đến
+                    <input type="text" id="day2" ng-model="search_data.date2" style="border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 10px; padding-left: 5px; min-height:37px">
+                </label>-->
+            </td>
+        </tr>
+    </table>       
+   <!--//////////////////////////////-->
+<table style="width:100%;" ng-show="query_month">
+        <tr>
+            <td colspan="2">
+                <label class="item item-input">
+                    <span class="input-label" style="text-align:center">Từ</span>
+                    <input type="text" id="month1" ng-model="search_data.month">
+                </label>
+                <!--<label class="item item-input" style="width:80%; height:40px; border-radius:5px; border:none;"> 
+                    Từ
+                    <input type="text" placeholder="Tháng / Năm" id="month1" ng-model="search_data.month" style="border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 20px; padding-left: 10px; min-height:37px">
+                </label>-->
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label class="item item-input">
+                    <span class="input-label" style="text-align:center">Đến</span>
+                    <input type="text" id="month2" ng-model="search_data.month2">
+                </label>
+                <!--<label class="item item-input" style="width:80%; height:40px; border-radius:5px; border:none;">
+                    Đến
+                    <input type="text" placeholder="Tháng / Năm" id="month2" ng-model="search_data.month2" style="border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 10px; padding-left: 10px; min-height:37px">
+                </label>-->
+            </td>
+        </tr>
+    </table> 
+    <!--//////////////////////////////-->
+    <table style="width:100%;" ng-show="query_period">
+        <tr>
+            <td colspan="2">
+                <label class="item item-input">
+                    <span class="input-label" style="text-align:center">Từ</span>
+                    <input type="text" id="month3" ng-model="search_data.month3">
+                </label>
+                <!--<label class="item item-input" style="width:80%; height:40px; border-radius:5px; border:none;"> 
+                    Từ
+                    <input type="text" placeholder="Tháng / Năm" id="month1" ng-model="search_data.month" style="border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 20px; padding-left: 10px; min-height:37px">
+                </label>-->
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label class="item item-input">
+                    <span class="input-label" style="text-align:center">Đến</span>
+                    <input type="text" id="month4" ng-model="search_data.month4">
+                </label>
+                <!--<label class="item item-input" style="width:80%; height:40px; border-radius:5px; border:none;">
+                    Đến
+                    <input type="text" placeholder="Tháng / Năm" id="month2" ng-model="search_data.month2" style="border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 10px; padding-left: 10px; min-height:37px">
+                </label>-->
+            </td>
+        </tr>
+         <tr>
+            <td colspan="2">
+                <label class="item item-input">
+                    <span class="input-label" style="text-align:center">Kỳ</span>
+                     <select ng-model="search_data.period" ng-init="search_data.period='1'" style="height:35px; border:none">
+                        <option value="1" selected="selected">1</option>
+                        <option value="2" >2</option>
+                        <option value="3" >3</option>
+                    </select>
+                </label>
+                <!--<label class="item item-input" style="width:80%; height:40px; border-radius:5px; border:none;"> 
+                    Kỳ
+                    <select style="width:100%;text-align:center;padding-top:5px; background:#fff; border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 22px; padding-left: 5px; min-height:37px" ng-model="search_data.period" ng-init="search_data.period='1'">
+                        <option value="1" selected="selected">1</option>
+                        <option value="2" >2</option>
+                        <option value="3" >3</option>
+                    </select>
+                </label>-->
+            </td>
+        </tr>
+    </table> 
+    <!--//////////////////////////////-->
+    <table style="width:100%;" ng-show="query_type">
+        <tr>
+            <td colspan="2">
+                <label class="item item-input">
+                    <span class="input-label" style="text-align:center">Loại hình</span>
+                     <select ng-model="search_data.type" ng-init="search_data.type='1'" style="height:35px; border:none">
+                        <option value="1" selected="selected">Điện dân dụng</option>
+                        <option value="2" >Điện kinh doanh</option>
+                        <option value="3" >khác</option>
+                    </select>
+                </label>
+                <!--<label class="item item-input" style="width:80%; height:40px; border-radius:5px; border:none;"> 
+                    Loại hình
+                    <select style="width:100%;text-align:center; background:#fff; border: 1px solid #DDDDDD; border-radius: 5px; margin-left: 10px; padding-left: 5px; min-height:37px" ng-model="search_data.type" ng-init="search_data.type='1'">
+                        <option value="1" selected="selected">Điện dân dụng</option>
+                        <option value="2" >Điện kinh doanh</option>
+                        <option value="3" >khác</option>
+                    </select>
+                </label>-->
+            </td>
+        </tr>
+    </table>
+  
+    <script>
+     $('#month1').monthpicker();
+     $('#month2').monthpicker();
+     $('#month3').monthpicker();
+     $('#month4').monthpicker();
+     $( "#day1" ).datepicker({ dateFormat: 'dd/mm/yy' });
+     $( "#day2" ).datepicker({ dateFormat: 'dd/mm/yy' });
+     $(document).click(function (e) {
+        var ele = $(e.target);
+        if (!ele.hasClass("hasDatepicker") && !ele.hasClass("ui-datepicker") && !ele.hasClass("ui-icon") && !$(ele).parent().parents(".ui-datepicker").length)
+            $(".hasDatepicker").datepicker("hide");
+    });
+    </script>
+  <style>
+    .ui-datepicker {
+        margin-left: -30px;
+        margin-top: 15px;
+    }
+    .ha a{
+        text-decoration: none;
+    }
+    .nof{
+    width: 35px;
+    height: 35px;
+    margin-bottom: -10px;
+    margin-right: 5px;
+}
+    </style>
+    <center style="margin-bottom:15px">
+      <button class="btnlogin button ion-ios-search" ng-click="searchContent(search_data)" style="color:#fff"><i style="padding-left:5px;">Tra cứu</i></button>
+    </center>
+    </form>
+    <!--<hr/>-->
+     
+
+    <div ng-hide="contents">
+      Không có thông tin nào!
+    </div>
+    <div id="list_content"style="padding-bottom:40px">
+    <hr style="border-top: dashed 1px #70389e; margin-bottom:10px; margin-top:15px"/>
+    <div id="contentDiv"  ng-repeat="content in contents" style="padding-bottom:5px;" class="ha">
+            <a ng-bind-html="content.contents" ng-show="dat">
+                <!--<img src="img/nof.png" class="nof"/>-->
+            </a>
+            <a ng-show="mon">
+                <img src="img/nof.png" class="nof"/>
+                Ngày ghi chỉ số : {{content.contents}}
+            </a>
+            <a ng-bind-html="content.contents" ng-show="yea">
+                <!--<img src="img/nof.png" class="nof"/>-->
+            </a>
+            <a ng-show="per">
+                <img src="img/nof.png" class="nof"/>
+                Chỉ số điện tiêu thụ : {{content.contents}}
+            </a>
+            <a ng-show="per2" ng-bind-html="content.contents">
+                <!--<img src="img/nof.png" class="nof"/>-->
+            </a>
+             <a ng-show="ty">
+                <img src="img/nof.png" class="nof"/>
+               Giá điện: {{content.contents}} VNĐ
+            </a>
+             <hr style="border-top: dashed 1px #70389e; margin-bottom:10px; margin-top:15px"/>
+            <!--<a ng-href="#/app/infodetail/{{content.catalog}}/5652b2a925062bee7f3e5d74">
+             <img src="img/nof.png" class="nof"/>
+                {{content.title}}
+            </a>-->
+        <!--<div ng-bind-html="content.content">
+        </div>-->
+        <!--<hr/>-->
+      </div>
+      </div>
+</div>
+   </ion-content>
+</ion-view>
