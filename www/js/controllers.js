@@ -195,19 +195,13 @@
         $scope.pay = false;
 
         $scope.pay_do = function (user) {
-            $ionicLoading.show({
-                template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Đang tải dữ liệu'
-            });
+           $localstorage.setObject('cusId', user.customerId);
+           $state.go('app.epaymentpaydetail', {}, {reload:true})
             // var search_data = {};
             // search_data.pageIndex = 1;        
             // search_data.username = user.customerId;
 
-            $scope.invoices = contentService.GetinvoiceDetail(user.customerId);
-            $state.go('app.epaymentpaydetail', {}, {reload:true})
-            console.log($scope.invoices);
-            if ($scope.invoices) {
-                $ionicLoading.hide();
-            }
+            
             // if(!search_data.username)
             // {
             //     user.customerId = info.user_name;
@@ -246,6 +240,20 @@
         }
     })
 
+    .controller('Epaymentpay2Ctrl', function ($scope, $state, $location, $ionicLoading, $localstorage, $stateParams, apiService, contentService) {
+        var _Id = $localstorage.getObject('cusId');
+        if(_Id)
+        {
+            $ionicLoading.show({
+                template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Đang tải dữ liệu'
+            });
+            $scope.invoices = contentService.GetinvoiceDetail(_Id);
+            console.log($scope.invoices);
+            if ($scope.invoices) {
+                $ionicLoading.hide();
+            }
+        }
+    })
     .controller('EpaymentpaytabCtrl', function ($scope, $sce, $state, apiService, $ionicLoading, $localstorage, $location, $window, $stateParams, contentService) {
         
         var tmp = $stateParams.amount;
@@ -259,22 +267,28 @@
 
                 var trans_confirm_info = {};
                 trans_confirm_info.merchant = 'bigpay';
-                trans_confirm_info.provider = {code:"evnhn",name:'EVN Hà Nội'};
-                trans_confirm_info.service = {code: "payment", name:'thanh toán'};
-                trans_confirm_info.sub_service = {code:"home",name:'dịch vụ tiện ích'};
-                trans_confirm_info.customer_ref = $stateParams.customerid;//mã khách hàng
+                // trans_confirm_info.provider = {code:"evnhn",name:'EVN Hà Nội'};
+                trans_confirm_info.service = {code: "payment", name:'Thanh toán điện tử'};
+                trans_confirm_info.sub_service = {code:"billing",name:'Thanh toán hoá đơn'};
+                trans_confirm_info.customer = {
+                    name: "CUSTOMER "+$stateParams.customerid,
+                    mobile: "", //ma hoa don
+                    email: ""
+                };
+                // trans_confirm_info.customer_ref = $stateParams.customerid;//mã khách hàng
                 trans_confirm_info.note = "thanh toán tiền điện";
-                trans_confirm_info.system_note = "Thanh toán " + $stateParams.amount + ' cho hóa đơn '
-                + $stateParams.customerid + ' ("thanh toán tiền điện")';
+                // trans_confirm_info.system_note = "Thanh toán " + $stateParams.amount + ' cho hóa đơn '
+                // + $stateParams.customerid + ' ("thanh toán tiền điện")';
                 trans_confirm_info.amount = $stateParams.amount;//So tien thanh toan
                 trans_confirm_info.detail = {
-                    ref_id: $stateParams.customerid, //ma hoa don
-                    note: "thánh toán tiền điện"
+                    amount: $stateParams.amount,
+                    bill_info: $stateParams.customerid, //ma hoa don
+                    bill_provider: "EVNHN"
                 };
                 trans_confirm_info.status = {code:"waiting",name:'chờ xác nhận'};
                 
                 trans_confirm_info.payment_method = "atm"; //atm - credit
-                trans_confirm_info.status = { code: "confirm", name: 'chờ thanh toán' };
+                // trans_confirm_info.status = { code: "confirm", name: 'chờ thanh toán' };
                  apiService.create_transaction(JSON.stringify(trans_confirm_info))
                  .then(function(response) {
                         var result = response.data;

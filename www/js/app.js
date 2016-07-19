@@ -163,7 +163,7 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
       views:{
         'menuContent':{
           templateUrl:'templates/payment/epayment_paydetail.html',
-          // controller:'EpaymentpayCtrl'
+          controller:'Epaymentpay2Ctrl'
         }
       }
     })

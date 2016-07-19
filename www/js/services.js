@@ -378,8 +378,7 @@ angular.module('dataServices', [])
                 ).query();
                 return contents;
             },
-            GetNewdetail: function(id)
-            {
+            GetNewdetail: function(id){
                  var user_name ="all";
                  if($localstorage.getObject('user'))
                 {
@@ -393,8 +392,7 @@ angular.module('dataServices', [])
                 ).get();
                 return contents;
             },
-            Getfaq: function()
-            {
+            Getfaq: function(){
                 var user_name ="all";
                  if($localstorage.getObject('user'))
                 {
@@ -488,7 +486,7 @@ angular.module('dataServices', [])
             },
              create_transaction: function(transaction) {
                 // var user_info = $localstorage.getObject('user_info');
-                var id = "unauth@bigpay.vn";
+                var id = "huynq@payflow.vn";
                 // console.log('user:',user_info);
                 // if(user_info != null) id= transaction.customer_ref;
                 var url = 'http://api.bigpay.vn/transaction/create/bigpay_2.0.0.0/' + id + '/?transaction=' + transaction + "&sign=";
