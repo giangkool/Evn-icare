@@ -289,11 +289,16 @@
                 
                 trans_confirm_info.payment_method = "atm"; //atm - credit
                 // trans_confirm_info.status = { code: "confirm", name: 'chờ thanh toán' };
+                
+                $ionicLoading.show({
+                    template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Đang tải dữ liệu'
+                });
                  apiService.create_transaction(JSON.stringify(trans_confirm_info))
                  .then(function(response) {
                         var result = response.data;
                         if (!result || result.error_code != "00") {
                             $scope.onloginerror = "Có lỗi trong quá trình xử lý. Vui lòng thử lại sau";
+                            $ionicLoading.hide();
                             return;
                         }
                         // if (payment_option == "bigpay") {
@@ -301,6 +306,7 @@
                         // };
                         // if (payment_method == "atm" || payment_method == "credit") {
                            $scope.url = function(src){
+                               $ionicLoading.hide();
                                return $sce.trustAsResourceUrl(src);                               
                            }
                            $scope.murl = {src:result.url_redirect};
@@ -756,7 +762,6 @@
             console.log(searchdata);
         }
     })
-    
     .controller('EpaymentCashinCtrl', function ($scope, $localstorage, $location, $window, $stateParams, contentService){
         $scope.info_user = [
             { value: 'Chọn Tài Khoản' },
@@ -785,8 +790,7 @@
             $scope.search_data.comment = '';
         }
     })
-    
-      .controller('EpaymentCashoutCtrl', function ($scope, $localstorage, $location, $window, $stateParams, contentService){
+    .controller('EpaymentCashoutCtrl', function ($scope, $localstorage, $location, $window, $stateParams, contentService){
         $scope.info_user = [
             { value: 'Chọn Tài Khoản' },
             { value: '007-10010-056-530', id: '1' },
@@ -814,7 +818,6 @@
             $scope.search_data.comment = '';
         }
     })
-    
     .controller('EbankInsideCtrl', function ($scope, $localstorage, $location, $window, $stateParams, contentService) {
         $scope.info_user = [
             { value: 'Chọn Tài Khoản' },
@@ -1204,7 +1207,6 @@
         }
     })
     .controller('HomeneedCtrl', function ($scope, $localstorage, $location, $window, $stateParams, contentService) {
-
     })
     .controller('GetccCtrl', function ($scope, $localstorage, $location, $window, $stateParams, contentService) {
         $scope.contents = contentService.GetCC();
