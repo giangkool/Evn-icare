@@ -103,6 +103,7 @@
         $scope.changePass = function () {
             $scope.modal.show();
         };
+
         $scope.signIn = function (user) {
             apiService.postLogin(user.username, user.password).then(function (response) {
                 $scope.result = response.data;
@@ -110,15 +111,17 @@
                     $scope.isLogin = false;
                     $localstorage.setObject('user', $scope.result);
                     // $window.location.reload(true);
-                    $state.go('app.home');
-                    return;
+                    // $state.go('app.home');
+                    // $state.go('app.home', {}, { reload: true });
+                    window.location.href='#/app/home';
+                    window.location.reload(true);
                 }
                 else {
                     $scope.error_message = "Sai thông tin đăng nhập";
                 }
             }, function (error) {
                 console.log('opsssss' + error);
-                $scope.error_message = "Có lỗi trong quá trình xử lý";
+                $scope.error_message = "Có lỗi trong quá trình xử lý vui lòng thử lại";
             });
         };
         // Perform the login action when the user submits the login form
@@ -141,6 +144,7 @@
             console.log("Clean storage");
             $scope.isLogin = true;
             $state.go('app.login', {}, { reload: true });
+            $window.location.reload(true);
         }
         $scope.user = $localstorage.getObject('user');
         if ($scope.user) {
