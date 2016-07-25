@@ -34,7 +34,7 @@ angular.module('dataServices', [])
             listCatalogs: function () {
                 // catalogs = $localstorage.getObject('catalogs');
                 // if(catalogs == null){
-                    catalogs = $resource('http://icare.bigpay.vn/content/icare/catalogs').query();
+                    catalogs = $resource('http://icareprod.bigpay.vn/content/icare/catalogs').query();
                 //     $localstorage.setObject('catalogs',catalogs);    
                 // }
                 return catalogs;
@@ -49,7 +49,7 @@ angular.module('dataServices', [])
                 //return $resource('http://cds.bigpay.vn/content/icare/catalog/' + id, {}).get();
             },
             listContents: function (id) {
-                contents = $resource('http://icare.bigpay.vn/content/icare/contents/' + id + '/' + $localstorage.getObject('user').user_name).query();
+                contents = $resource('http://icareprod.bigpay.vn/content/icare/contents/' + id + '/' + $localstorage.getObject('user').user_name).query();
                 // contents = $resource('http://cds.bigpay.vn/content/icare/contents/' + id + '/all').query();
                 return contents;
             },
@@ -58,7 +58,7 @@ angular.module('dataServices', [])
                 {
                     if(contents[i].id == Id) return contents[i];
                 }
-                return $resource('http://icare.bigpay.vn/content/icare/' + catalogId +'/' + Id).get();
+                return $resource('http://icareprod.bigpay.vn/content/icare/' + catalogId +'/' + Id).get();
             },
             // searchContent: function(searchdata){
             //     var user_name="all";
@@ -90,7 +90,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/getpower'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/getpower'
                 + '/'
                 + user_name
                 +'?fselect_date='
@@ -113,7 +113,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/getmeterrecord'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/getmeterrecord'
                 + '/'
                 + user_name
                 +'?fselect_date='
@@ -136,7 +136,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/getmeter'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/getmeter'
                 + '/'
                 + user_name
                 +'?fselect_date='
@@ -161,7 +161,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/getinvoice'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/getinvoice'
                 + '/'
                 + user_name
                 +'?fselect_date='
@@ -186,7 +186,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/getprice'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/getprice'
                 + '/'
                 + user_name
                 +'?type='
@@ -199,7 +199,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/getmeterstatis'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/getmeterstatis'
                 + '/'
                 + user_name
                 +'?fyear='
@@ -217,7 +217,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/cashiers'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/cashiers'
                 + '/'
                 + user_name
                 +'?latitude='
@@ -233,7 +233,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/invoices'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/invoices'
                 + '/'
                 + user_name
                 +'?page_index='
@@ -242,7 +242,7 @@ angular.module('dataServices', [])
                 return contents;
             },
             Getinvoices: function(searchdata){
-                contents =  $resource('http://icare.bigpay.vn/content/icare/invoices'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/invoices'
                 + '/'
                 + searchdata.username
                 +'?page_index='
@@ -256,7 +256,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/cregister'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/cregister'
                 + '/'
                 + user_name
                 +'?fullname='
@@ -292,7 +292,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/eregister'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/eregister'
                 + '/'
                 + user_name
                 +'?enterpriseName='
@@ -332,7 +332,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/intro'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/intro'
                 + '/'
                 + user_name
                 ).query();
@@ -344,7 +344,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/cc'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/cc'
                 + '/'
                 + user_name
                 ).query();
@@ -356,7 +356,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/newscategories'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/newscategories'
                 + '/'
                 + user_name
                 ).query();
@@ -368,7 +368,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/news'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/news'
                 + '/'
                 + user_name
                 +'?id='
@@ -384,7 +384,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/newdetail'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/newdetail'
                 + '/'
                 + user_name
                 +'?id='
@@ -398,7 +398,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/faq'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/faq'
                 + '/'
                 + user_name
                 ).query();
@@ -410,7 +410,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/ratingservices'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/ratingservices'
                 + '/'
                 + user_name
                 ).query();
@@ -422,7 +422,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/quiz'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/quiz'
                 + '/'
                 + user_name
                 + '?id='
@@ -436,7 +436,7 @@ angular.module('dataServices', [])
                 {
                     user_name=$localstorage.getObject('user').user_name;
                 }
-                contents =  $resource('http://icare.bigpay.vn/content/icare/putquiz'
+                contents =  $resource('http://icareprod.bigpay.vn/content/icare/putquiz'
                 + '/'
                 + user_name
                 + '?quiz='
@@ -464,7 +464,7 @@ angular.module('dataServices', [])
     .factory('apiService', function ($http) {
         return {
             postLogin: function (username, password) {
-                return $http.get('http://icare.bigpay.vn/id/login/icare?username=' + username + '&password=' + password);
+                return $http.get('http://icareprod.bigpay.vn/id/login/icare?username=' + username + '&password=' + password);
             },
              auth: function (big_user, big_password) {
                     return $http.get('http://bigpay.vn/api/sandbox/auth/' + big_user + '/' + big_password );  
